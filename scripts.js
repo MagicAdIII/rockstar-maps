@@ -1,6 +1,6 @@
 (function () {
 
-	var atlas = L.tileLayer('atlas/{z}/{x}/{y}.png', {
+	var atlas = L.tileLayer('maps/gtav/atlas/{z}/{x}/{y}.png', {
 	    minZoom: 1,
 	    maxZoom: 5,
 	    noWrap: true,
@@ -8,7 +8,7 @@
 	    background: '#0fa8d2'
 	});
 
-	var satellite = L.tileLayer('satellite/{z}/{x}/{y}.png', {
+	var satellite = L.tileLayer('maps/gtav/satellite/{z}/{x}/{y}.png', {
 	    minZoom: 1,
 	    maxZoom: 5,
 	    noWrap: true,
@@ -16,7 +16,7 @@
 	    background: '#143d6b'
 	});
 
-	var road = L.tileLayer('road/{z}/{x}/{y}.png', {
+	var road = L.tileLayer('maps/gtav/road/{z}/{x}/{y}.png', {
 	    minZoom: 1,
 	    maxZoom: 5,
 	    noWrap: true,
