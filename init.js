@@ -63,7 +63,7 @@
 
 	var hash = new L.Hash(map);
 
-	L.marker([0, 0]).addTo(map);
+	L.marker([0, 0]).bindPopup('asdfasdf').addTo(map);
 
 	atlas.bringToFront();
 
