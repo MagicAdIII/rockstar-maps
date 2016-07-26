@@ -45,7 +45,15 @@
 		crs: CRS
 	});
 
-	map.setView([0, 2000], 2);
+	var layers = L.control.layers({
+		"Műhold": satellite,
+		"Domborzat": atlas,
+		"Utak": road
+	}, {}, {
+		collapsed: false
+	}).addTo(map);
+
+	map.setView([27.35, -752.05], 3);
 
 	// Leaflet uses grey background by default when there are no more tiles to display.
     // This changes it to match the background colour of our tiles.
@@ -55,7 +63,6 @@
 
 	var hash = new L.Hash(map);
 
-	L.control.layers({"Satellite": satellite, "Atlas": atlas, "Road": road}, {}).addTo(map);
 	L.marker([0, 0]).addTo(map);
 
 	atlas.bringToFront();
