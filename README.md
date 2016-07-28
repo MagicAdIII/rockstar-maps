@@ -24,6 +24,7 @@ Other:
 * Tools list: http://gtaforums.com/topic/267202-tools-scripts-source-code-list/?hl=radar
 * Map images: http://www.igta5.com/map
 * Watermarked but detailed maps: http://snapmap.wikigta.org/
+* All about GTA modding, file extensions, tools, etc: http://www.gtamodding.com/
 
 ## Similar projects
 https://gtamap.net/ (leaflet)
