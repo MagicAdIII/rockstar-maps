@@ -23,6 +23,7 @@ Other:
 * Coordinate projection converter: http://cs2cs.mygeodata.eu/
 * Tools list: http://gtaforums.com/topic/267202-tools-scripts-source-code-list/?hl=radar
 * Map images: http://www.igta5.com/map
+* Watermarked but detailed maps: http://snapmap.wikigta.org/
 
 ## Similar projects
 https://gtamap.net/ (leaflet)
