@@ -39,6 +39,7 @@ Leaflet plugins we should use:
 * Modal window: https://github.com/mapshakers/leaflet-control-window
 * Print and image: https://github.com/aratcliffe/Leaflet.print | https://github.com/mapbox/leaflet-image
 * React Leaflet: https://github.com/PaulLeCam/react-leaflet
+* Search by tags: https://github.com/maydemirx/leaflet-tag-filter-button
 
 API / JSON / Data:
 * Social Club “API”: https://github.com/gta5-map/Social-Club-API-cheat-sheet
