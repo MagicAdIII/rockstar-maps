@@ -1,14 +1,19 @@
+// Variables
+@import "variables";
+
+// Vendor
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/leaflet/dist/leaflet";
+
+// 8===o
 body {
     padding: 0;
     margin: 0;
-<<<<<<< HEAD
 }
 html, body, #map {
     height: 100%;
-=======
     font-family: Helvetica, Arial, sans-serif; font-size: 12px;
     overflow: hidden;
->>>>>>> f422336a591e3203bb70cde5ffaab5c5fad889c0
 }
 
 .leaflet-container {
