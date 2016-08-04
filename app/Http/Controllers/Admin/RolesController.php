@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use Session;
-use App\Http\Requests;
+use App\Http\Requests\RoleRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
-use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 class RolesController extends Controller
@@ -38,7 +37,7 @@ class RolesController extends Controller
      *
      * @return void
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
 
         Role::create($request->all());
@@ -83,7 +82,7 @@ class RolesController extends Controller
      *
      * @return void
      */
-    public function update($id, Request $request)
+    public function update($id, RoleRequest $request)
     {
 
         $role = Role::findOrFail($id);

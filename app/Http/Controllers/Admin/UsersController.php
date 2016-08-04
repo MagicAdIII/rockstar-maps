@@ -7,8 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\Users\UserUpdateRequest;
-use App\Http\Requests\Users\UserStoreRequest;
+use App\Http\Requests\UserRequest;
 use Carbon\Carbon;
 use Session;
 
@@ -41,7 +40,7 @@ class UsersController extends Controller
      *
      * @return void
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
 
         User::create($request->all());
@@ -86,7 +85,7 @@ class UsersController extends Controller
      *
      * @return void
      */
-    public function update($id, UserUpdateRequest $request)
+    public function update($id, UserRequest $request)
     {
         $user = User::findOrFail($id);
         $user->update($request->all());

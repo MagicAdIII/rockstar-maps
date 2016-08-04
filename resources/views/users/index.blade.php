@@ -17,14 +17,14 @@
                     <td>{{ $item->id or $loop->index }}</td>
                     <td>{{ $item->name }}</td><td>{{ $item->username }}</td><td>{{ $item->email }}</td>
                     <td>
-                        <a href="{{ url('/admin/users/' . $item->id) }}" class="btn btn-success btn-xs" title="View user"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/admin/users/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit user"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/admin/users/' . $item->id) }}" class="btn btn-success btn-xs" title="View user">view</a>
+                        <a href="{{ url('/admin/users/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit user">edit</a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/admin/users', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete user" />', array(
+                            {!! Form::button('delete', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
                                     'title' => 'Delete user',

@@ -17,14 +17,14 @@
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td>
-                        <a href="{{ route('roles.show', $item->id) }}" class="btn btn-success btn-xs" title="View Role"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ route('roles.edit', $item->id) }}" class="btn btn-primary btn-xs" title="Edit Role"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ route('roles.show', $item->id) }}" class="btn btn-success btn-xs" title="View Role">view</a>
+                        <a href="{{ route('roles.edit', $item->id) }}" class="btn btn-primary btn-xs" title="Edit Role">edit</a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'route' => ['roles.destroy', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Role" />', array(
+                            {!! Form::button('delete', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
                                     'title' => 'Delete Role',
