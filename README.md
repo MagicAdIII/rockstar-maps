@@ -2,7 +2,8 @@
 
 ## Setup
 1. Clone this repo
-2. Run init.sh (@todo)
+2. Create .env file (see required options for .env.example)
+3. Install dependencies: composer install & npm i
 
 ## Useful links
 
