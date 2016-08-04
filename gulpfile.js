@@ -1,20 +1,71 @@
 var elixir = require('laravel-elixir');
+var webpack = require('webpack');
+var gutil = require('gulp-util');
+var path = require('path');
+var plugins = require('gulp-load-plugins')();
 
-require('laravel-elixir-vue');
+// Load environment variables
+require('dotenv').config();
 
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
- */
+// Create tiles for each map with gdal2tiles
+gulp.task('generate_tiles', function() {
+    gulp.src('resources/maps/**/**.{jpg,png}')
+        .pipe(plugins.exec(process.env.GDAL2TILES_PATH + ' -p raster -z 0-5 -w none <%= file.path %> public/maps/<%= file.path.split("/").pop().split(".")[0] %>'));
+});
+
+// Minify tiles
+gulp.task('minify_tiles', function() {
+    return gulp.src('public/maps/**/**.png')
+               .pipe(plugins.image())
+               .pipe(gulp.dest('public/maps'));
+});
+
+// Create & minify tiles
+gulp.task('tiles', ['generate_tiles', 'minify_tiles']);
+
+// Create javascript bundle
+gulp.task('webpack', function(cb) {
+    return webpack({
+        entry: './resources/assets/js/app.js',
+        output: {
+            path: path.join(__dirname, 'public/js'),
+            filename: 'app.js'
+        },
+       plugins: [
+            new webpack.DefinePlugin({
+                'process.env': {
+                    'NODE_ENV': JSON.stringify(elixir.inProduction ? 'production' : 'development')
+                }
+            })
+        ],
+        module: {
+            loaders: [
+                {
+                    test: /.jsx?$/,
+                    loader: 'babel-loader',
+                    exclude: /node_modules/,
+                    query: {
+                        presets: ['es2015-webpack', 'react']
+                    }
+                }
+            ]
+        }
+    }, function(err, stats) {
+        if (err) {
+            throw new gutil.PluginError('webpack', err);
+        }
+
+        // @todo somehow pass this through elixir for pretty output
+        gutil.log('[webpack]', stats.toString());
+        cb();
+    });
+});
 
 elixir(function(mix) {
-	console.log(mix);
     mix.sass('app.scss')
-       .rollup('app.js');
+       .task('webpack', 'resources/assets/js/**/*.js')
+       .version([
+            'css/app.css',
+            'js/app.js'
+        ]);
 });

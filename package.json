@@ -5,17 +5,22 @@
     "dev": "gulp watch"
   },
   "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015-webpack": "^6.4.2",
+    "babel-preset-react": "^6.11.1",
     "bootstrap-sass": "^3.3.7",
     "gulp": "^3.9.1",
     "jquery": "^3.1.0",
     "js-cookie": "^2.1.2",
     "laravel-elixir": "^6.0.0-9",
-    "laravel-elixir-rollup-official": "^1.0.4",
-    "laravel-elixir-vue": "^0.1.4",
     "leaflet": "^0.7.7",
     "leaflet-hash": "^0.2.1",
-    "lodash": "^4.14.0",
-    "vue": "^1.0.26",
-    "vue-resource": "^0.9.3"
+    "webpack": "^2.1.0-beta.20"
+  },
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "gulp-exec": "^2.1.2",
+    "gulp-image": "^2.4.1"
   }
 }

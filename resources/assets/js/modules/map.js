@@ -1,3 +1,5 @@
+import L from 'leaflet';
+
 /**
  * Temporary - should be cut into parts.
  */
