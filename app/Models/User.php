@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -34,5 +35,15 @@ class User extends Authenticatable
      */
     public function isAdmin() {
         return $this->role_id === 1;
+    }
+
+    /**
+     * Return the Users assigned to this Role.
+     *
+     * @return Role
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }

@@ -3,6 +3,7 @@
     <!-- Right Side Of Navbar -->
     <ul class="nav navbar-nav navbar-right">
         <!-- Authentication Links -->
+        <li><a href="{{ url('/') }}">Home</a></li>
         @if (Auth::guest())
             <li><a href="{{ url('/login') }}">Login</a></li>
             <li><a href="{{ url('/register') }}">Register</a></li>
@@ -17,6 +18,10 @@
                     {{ csrf_field() }}
                 </form>
             </li>
+            @if (Auth::user()->isAdmin())
+                <li><a href="{{ route('roles.index') }}">Roles</a></li>
+                <li><a href="{{ route('users.index') }}">Users</a></li>
+            @endif
         @endif
     </ul>
     </div>
