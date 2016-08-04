@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Session;
-use App\Http\Requests\RoleRequest;
+use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Role;
-use Carbon\Carbon;
 
-class RolesController extends Controller
+use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use Carbon\Carbon;
+use Session;
+
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +20,9 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Role::paginate(15);
+        $users = User::paginate(15);
 
-        return view('roles.index', compact('roles'));
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -29,7 +32,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        return view('roles.create');
+        return view('users.create');
     }
 
     /**
@@ -37,14 +40,14 @@ class RolesController extends Controller
      *
      * @return void
      */
-    public function store(RoleRequest $request)
+    public function store(UserRequest $request)
     {
 
-        Role::create($request->all());
+        User::create($request->all());
 
-        Session::flash('flash_message', 'Role added!');
+        Session::flash('flash_message', 'User added!');
 
-        return redirect()->route('roles.index');
+        return redirect('admin/users');
     }
 
     /**
@@ -56,9 +59,9 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-        $role = Role::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        return view('roles.show', compact('role'));
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -70,9 +73,9 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        $role = Role::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        return view('roles.edit', compact('role'));
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -82,15 +85,14 @@ class RolesController extends Controller
      *
      * @return void
      */
-    public function update($id, RoleRequest $request)
+    public function update($id, UserRequest $request)
     {
+        $user = User::findOrFail($id);
+        $user->update($request->all());
 
-        $role = Role::findOrFail($id);
-        $role->update($request->all());
+        Session::flash('flash_message', 'User updated!');
 
-        Session::flash('flash_message', 'Role updated!');
-
-        return redirect()->route('roles.index');
+        return redirect('admin/users');
     }
 
     /**
@@ -102,10 +104,10 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        Role::destroy($id);
+        User::destroy($id);
 
-        Session::flash('flash_message', 'Role deleted!');
+        Session::flash('flash_message', 'User deleted!');
 
-        return redirect()->route('roles.index');
+        return redirect('admin/users');
     }
 }
