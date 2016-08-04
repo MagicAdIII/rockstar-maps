@@ -11,7 +11,13 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-Route::resource('/roles', 'RolesController');
-
 Auth::routes();
+
+Route::get('/', 'HomeController@index');
+
+// @fixme ugly as fuck
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
+
+    Route::resource('roles', 'RolesController');
+});
+

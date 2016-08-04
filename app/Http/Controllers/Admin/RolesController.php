@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use Session;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
-use App\Role;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use Session;
 
 class RolesController extends Controller
 {
@@ -41,12 +40,12 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         Role::create($request->all());
 
         Session::flash('flash_message', 'Role added!');
 
-        return redirect('roles');
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -86,13 +85,13 @@ class RolesController extends Controller
      */
     public function update($id, Request $request)
     {
-        
+
         $role = Role::findOrFail($id);
         $role->update($request->all());
 
         Session::flash('flash_message', 'Role updated!');
 
-        return redirect('roles');
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -108,6 +107,6 @@ class RolesController extends Controller
 
         Session::flash('flash_message', 'Role deleted!');
 
-        return redirect('roles');
+        return redirect()->route('roles.index');
     }
 }

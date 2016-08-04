@@ -7,7 +7,7 @@
 
     {!! Form::model($role, [
         'method' => 'PATCH',
-        'url' => ['/roles', $role->id],
+        'route' => ['roles.update', $role->id],
         'class' => 'form-horizontal'
     ]) !!}
 
