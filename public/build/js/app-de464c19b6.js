@@ -9242,20 +9242,24 @@ L.Map.include({
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
+'use strict';
 
+var _leaflet = __webpack_require__(0);
+
+var _leaflet2 = _interopRequireDefault(_leaflet);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * Temporary - should be cut into parts.
  */
 
 var mapContainer = 'map';
-var spaceshipParts = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.layerGroup([__WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1219, -3495.9]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([606.9, -3250.19]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1590.6, -2810.17]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([327.99, -2757.61]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1134.42, -2607.02]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([368.93, -2118.53]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1741.82, -1623.85]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([287.73, -1444.4]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([17.6, -1213.2]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-910.02, -1147.44]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1237.73, -1099.15]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([87.7, 810.37]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1907.52, 1388.69]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([467.37, -730.75]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([202.1, -569.72]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([159.39, -563.82]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1183.15, -518.54]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-228.05, -236.42]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-407.7, -151.8]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1169.4, -56.77]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1679.06, 39.44]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1964.25, 553.68]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([24.22, 637.12]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([2901.2, 796.12]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1531.9, 870.32]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-404.32, 1100.89]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-2809.35, 1449.64]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([3144.05, 2184.41]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([815.76, 1850.88]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1944.24, 1941.07]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1452.23, 2127.4]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1367.41, 2180.63]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([170.16, 2217.64]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([889.32, 2870.05]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1980.2, 2914.8]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-390.38, 2963.26]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([71.66, 3279.37]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1924.19, 3471.26]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-583.16, 3580.38]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([2514.3, 3789.52]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1517.61, 3803.93]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-530.27, 4474.36]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([3815.05, 4447.34]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1946.95, 4584.36]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([2437.55, 4779.96]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1441.5, 5414.89]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([2196.25, 5599.03]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-503.95, 5673.55]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-378.42, 6080.78]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([440.95, 6459.64])]);
+var spaceshipParts = _leaflet2.default.layerGroup([_leaflet2.default.marker([-1219, -3495.9]), _leaflet2.default.marker([606.9, -3250.19]), _leaflet2.default.marker([1590.6, -2810.17]), _leaflet2.default.marker([327.99, -2757.61]), _leaflet2.default.marker([1134.42, -2607.02]), _leaflet2.default.marker([368.93, -2118.53]), _leaflet2.default.marker([1741.82, -1623.85]), _leaflet2.default.marker([287.73, -1444.4]), _leaflet2.default.marker([17.6, -1213.2]), _leaflet2.default.marker([-910.02, -1147.44]), _leaflet2.default.marker([1237.73, -1099.15]), _leaflet2.default.marker([87.7, 810.37]), _leaflet2.default.marker([-1907.52, 1388.69]), _leaflet2.default.marker([467.37, -730.75]), _leaflet2.default.marker([202.1, -569.72]), _leaflet2.default.marker([159.39, -563.82]), _leaflet2.default.marker([-1183.15, -518.54]), _leaflet2.default.marker([-228.05, -236.42]), _leaflet2.default.marker([-407.7, -151.8]), _leaflet2.default.marker([-1169.4, -56.77]), _leaflet2.default.marker([1679.06, 39.44]), _leaflet2.default.marker([1964.25, 553.68]), _leaflet2.default.marker([24.22, 637.12]), _leaflet2.default.marker([2901.2, 796.12]), _leaflet2.default.marker([-1531.9, 870.32]), _leaflet2.default.marker([-404.32, 1100.89]), _leaflet2.default.marker([-2809.35, 1449.64]), _leaflet2.default.marker([3144.05, 2184.41]), _leaflet2.default.marker([815.76, 1850.88]), _leaflet2.default.marker([-1944.24, 1941.07]), _leaflet2.default.marker([-1452.23, 2127.4]), _leaflet2.default.marker([1367.41, 2180.63]), _leaflet2.default.marker([170.16, 2217.64]), _leaflet2.default.marker([889.32, 2870.05]), _leaflet2.default.marker([1980.2, 2914.8]), _leaflet2.default.marker([-390.38, 2963.26]), _leaflet2.default.marker([71.66, 3279.37]), _leaflet2.default.marker([1924.19, 3471.26]), _leaflet2.default.marker([-583.16, 3580.38]), _leaflet2.default.marker([2514.3, 3789.52]), _leaflet2.default.marker([1517.61, 3803.93]), _leaflet2.default.marker([-530.27, 4474.36]), _leaflet2.default.marker([3815.05, 4447.34]), _leaflet2.default.marker([-1946.95, 4584.36]), _leaflet2.default.marker([2437.55, 4779.96]), _leaflet2.default.marker([-1441.5, 5414.89]), _leaflet2.default.marker([2196.25, 5599.03]), _leaflet2.default.marker([-503.95, 5673.55]), _leaflet2.default.marker([-378.42, 6080.78]), _leaflet2.default.marker([440.95, 6459.64])]);
 
-var letterScraps = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.layerGroup([__WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1034.27, -3026.28]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1040.98, -2743.5]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-93.9, -2711.31]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-917.7, -2527.38]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([746.45, -2310.32]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1509.74, -2126.04]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([76, -1970.47]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1.82, -1732.61]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1377.77, -1409.84]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([2864.8, -1372.84]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1035.81, -1273.08]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1821.14, -1201.36]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([643.01, -1035.65]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-119.06, -977.22]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1243.1, -507.8]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([83.8, -431.93]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1095.95, -210.46]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1724.52, -196]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([265.37, -199.55]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-3020.47, 36.55]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-347.53, 53.37]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1052.25, 167.61]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-2303.8, 217.43]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-138.94, 868.39]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([688.1, 1204.67]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1548.76, 1380.17]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-432.14, 1598.46]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([3081.93, 1648.3]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-594.38, 2092]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([3069.21, 2160.99]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([180.21, 2263.83]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([926.96, 2445.36]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-2380.21, 2655.18]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-861.38, 2753.3]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-289.02, 2848.85]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([288.84, 2871.91]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1297.38, 2988.71]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1568.65, 3572.8]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1608.62, 4274.25]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-3.52, 4332.45]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1336.74, 4307.2]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-1007.1, 4836.94]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1877.09, 5078.98]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([3366.1, 5182.46]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-576.12, 5472.24]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([444.65, 5571.78]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([-403, 6319.28]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1439.6, 6335.2]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([1466.1, 6552.27]), __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([66.2, 6668.89])]);
+var letterScraps = _leaflet2.default.layerGroup([_leaflet2.default.marker([1034.27, -3026.28]), _leaflet2.default.marker([-1040.98, -2743.5]), _leaflet2.default.marker([-93.9, -2711.31]), _leaflet2.default.marker([-917.7, -2527.38]), _leaflet2.default.marker([746.45, -2310.32]), _leaflet2.default.marker([1509.74, -2126.04]), _leaflet2.default.marker([76, -1970.47]), _leaflet2.default.marker([-1.82, -1732.61]), _leaflet2.default.marker([-1377.77, -1409.84]), _leaflet2.default.marker([2864.8, -1372.84]), _leaflet2.default.marker([-1035.81, -1273.08]), _leaflet2.default.marker([-1821.14, -1201.36]), _leaflet2.default.marker([643.01, -1035.65]), _leaflet2.default.marker([-119.06, -977.22]), _leaflet2.default.marker([-1243.1, -507.8]), _leaflet2.default.marker([83.8, -431.93]), _leaflet2.default.marker([1095.95, -210.46]), _leaflet2.default.marker([-1724.52, -196]), _leaflet2.default.marker([265.37, -199.55]), _leaflet2.default.marker([-3020.47, 36.55]), _leaflet2.default.marker([-347.53, 53.37]), _leaflet2.default.marker([1052.25, 167.61]), _leaflet2.default.marker([-2303.8, 217.43]), _leaflet2.default.marker([-138.94, 868.39]), _leaflet2.default.marker([688.1, 1204.67]), _leaflet2.default.marker([-1548.76, 1380.17]), _leaflet2.default.marker([-432.14, 1598.46]), _leaflet2.default.marker([3081.93, 1648.3]), _leaflet2.default.marker([-594.38, 2092]), _leaflet2.default.marker([3069.21, 2160.99]), _leaflet2.default.marker([180.21, 2263.83]), _leaflet2.default.marker([926.96, 2445.36]), _leaflet2.default.marker([-2380.21, 2655.18]), _leaflet2.default.marker([-861.38, 2753.3]), _leaflet2.default.marker([-289.02, 2848.85]), _leaflet2.default.marker([288.84, 2871.91]), _leaflet2.default.marker([1297.38, 2988.71]), _leaflet2.default.marker([1568.65, 3572.8]), _leaflet2.default.marker([-1608.62, 4274.25]), _leaflet2.default.marker([-3.52, 4332.45]), _leaflet2.default.marker([1336.74, 4307.2]), _leaflet2.default.marker([-1007.1, 4836.94]), _leaflet2.default.marker([1877.09, 5078.98]), _leaflet2.default.marker([3366.1, 5182.46]), _leaflet2.default.marker([-576.12, 5472.24]), _leaflet2.default.marker([444.65, 5571.78]), _leaflet2.default.marker([-403, 6319.28]), _leaflet2.default.marker([1439.6, 6335.2]), _leaflet2.default.marker([1466.1, 6552.27]), _leaflet2.default.marker([66.2, 6668.89])]);
 
-var atlas = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.tileLayer('maps/gtav/atlas/{z}/{x}/{y}.png', {
+var atlas = _leaflet2.default.tileLayer('maps/gtav/atlas/{z}/{x}/{y}.png', {
 				minZoom: 1,
 				maxZoom: 5,
 				noWrap: true,
@@ -9263,7 +9267,7 @@ var atlas = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.tileLayer('maps/gtav
 				background: '#0fa8d2'
 });
 
-var satellite = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.tileLayer('maps/gtav/satellite/{z}/{x}/{y}.png', {
+var satellite = _leaflet2.default.tileLayer('maps/gtav/satellite/{z}/{x}/{y}.png', {
 				minZoom: 1,
 				maxZoom: 5,
 				noWrap: true,
@@ -9271,7 +9275,7 @@ var satellite = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.tileLayer('maps/
 				background: '#143d6b'
 });
 
-var road = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.tileLayer('maps/gtav/road/{z}/{x}/{y}.png', {
+var road = _leaflet2.default.tileLayer('maps/gtav/road/{z}/{x}/{y}.png', {
 				minZoom: 1,
 				maxZoom: 5,
 				noWrap: true,
@@ -9280,21 +9284,21 @@ var road = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.tileLayer('maps/gtav/
 });
 
 // Custom Coordinate Reference System to match GTA V's world.
-var CRS = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.Util.extend({}, __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.CRS, {
+var CRS = _leaflet2.default.Util.extend({}, _leaflet2.default.CRS, {
 				projection: {
 								project: function project(latlng) {
-												return new __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.Point(latlng.lat, latlng.lng);
+												return new _leaflet2.default.Point(latlng.lat, latlng.lng);
 								},
 								unproject: function unproject(point) {
-												return new __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.LatLng(point.x, point.y);
+												return new _leaflet2.default.LatLng(point.x, point.y);
 								}
 				},
 
-				transformation: new __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.Transformation(1 / 12446, 3756 / 8192, -1 / 12446, 5525 / 8192)
+				transformation: new _leaflet2.default.Transformation(1 / 12446, 3756 / 8192, -1 / 12446, 5525 / 8192)
 });
 
 // Init the map.
-var map = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.map(mapContainer, {
+var map = _leaflet2.default.map(mapContainer, {
 				layers: atlas,
 				attributionControl: false,
 				crs: CRS
@@ -9315,7 +9319,7 @@ var layersOptions = {
 				collapsed: false
 };
 
-var layers = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.control.layers(baseMaps, overlays, layersOptions).addTo(map);
+var layers = _leaflet2.default.control.layers(baseMaps, overlays, layersOptions).addTo(map);
 
 map.setView([27.35, -752.05], 3);
 
@@ -9325,9 +9329,9 @@ map.on('baselayerchange', function (e) {
 				this.getContainer().style.backgroundColor = e.layer.options.background;
 });
 
-var hash = new __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.Hash(map);
+var hash = new _leaflet2.default.Hash(map);
 
-__WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.marker([0, 0]).bindPopup('Center of the game map [0.0, 0.0]').addTo(map);
+_leaflet2.default.marker([0, 0]).bindPopup('Center of the game map [0.0, 0.0]').addTo(map);
 
 atlas.bringToFront();
 
@@ -9504,15 +9508,17 @@ atlas.bringToFront();
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_leaflet_hash__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_leaflet_hash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_leaflet_hash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_map_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_map_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__modules_map_js__);
+"use strict";
 
+var _leaflet = __webpack_require__(0);
 
+var _leaflet2 = _interopRequireDefault(_leaflet);
 
+__webpack_require__(2);
+
+__webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }
 /******/ ]);
