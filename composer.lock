@@ -4,56 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "32e2d38c26bf9d3a563e6382afa24057",
-    "content-hash": "a14fade1d87a2a5f0aab63c3fcfa4a53",
+    "hash": "6e8004e240b6e600630be61dc2753898",
+    "content-hash": "f8148f4a77d4d6f2f5db433cb44cf48a",
     "packages": [
-        {
-            "name": "appzcoder/crud-generator",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/appzcoder/crud-generator.git",
-                "reference": "18abc1b7c3864d71168ee0468355cca73c1542cf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/appzcoder/crud-generator/zipball/18abc1b7c3864d71168ee0468355cca73c1542cf",
-                "reference": "18abc1b7c3864d71168ee0468355cca73c1542cf",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~5.1",
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Appzcoder\\CrudGenerator\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sohel Amin",
-                    "email": "sohelamincse@gmail.com",
-                    "homepage": "http://www.appzcoder.com"
-                }
-            ],
-            "description": "Laravel 5 CRUD Generator",
-            "keywords": [
-                "crud",
-                "crud generator",
-                "laravel",
-                "laravel crud generator"
-            ],
-            "time": "2016-06-21 03:14:56"
-        },
         {
             "name": "classpreloader/classpreloader",
             "version": "3.0.0",
@@ -359,12 +312,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "bfedcaafcb0111eaaf656b362fab8568593f11cd"
+                "reference": "5d79a1c0ae1f8928a58b77719196cf5872994a9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/bfedcaafcb0111eaaf656b362fab8568593f11cd",
-                "reference": "bfedcaafcb0111eaaf656b362fab8568593f11cd",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/5d79a1c0ae1f8928a58b77719196cf5872994a9b",
+                "reference": "5d79a1c0ae1f8928a58b77719196cf5872994a9b",
                 "shasum": ""
             },
             "require": {
@@ -477,7 +430,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-08-03 18:47:24"
+            "time": "2016-08-04 19:25:27"
         },
         {
             "name": "laravelcollective/html",
@@ -1883,6 +1836,53 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "appzcoder/crud-generator",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/appzcoder/crud-generator.git",
+                "reference": "18abc1b7c3864d71168ee0468355cca73c1542cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/appzcoder/crud-generator/zipball/18abc1b7c3864d71168ee0468355cca73c1542cf",
+                "reference": "18abc1b7c3864d71168ee0468355cca73c1542cf",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.1",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Appzcoder\\CrudGenerator\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sohel Amin",
+                    "email": "sohelamincse@gmail.com",
+                    "homepage": "http://www.appzcoder.com"
+                }
+            ],
+            "description": "Laravel 5 CRUD Generator",
+            "keywords": [
+                "crud",
+                "crud generator",
+                "laravel",
+                "laravel crud generator"
+            ],
+            "time": "2016-06-21 03:14:56"
+        },
         {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
