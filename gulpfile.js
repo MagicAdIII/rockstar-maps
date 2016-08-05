@@ -64,7 +64,6 @@ gulp.task('webpack', function(cb) {
                             'babel-plugin-transform-es2015-destructuring',
                             'babel-plugin-transform-es2015-block-scoping',
                             'babel-plugin-transform-es2015-typeof-symbol',
-                            'babel-plugin-transform-es2015-modules-commonjs',
                             ['babel-plugin-transform-regenerator', { async: false, asyncGenerators: false }],
                         ],
                         presets: ['react']
