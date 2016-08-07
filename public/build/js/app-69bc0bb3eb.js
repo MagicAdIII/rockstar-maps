@@ -61,7 +61,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -9244,6 +9244,9 @@ L.Map.include({
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__config__);
+
 
 
 /**
@@ -9501,6 +9504,12 @@ atlas.bringToFront();
 
 /***/ },
 /* 3 */
+/***/ function(module, exports) {
+
+throw new Error("Module build failed: SyntaxError: /home/gpap/Code/www/rockstarmaps.local/resources/assets/js/modules/config.js: 'return' outside of function (1:0)\n\u001b[0m> 1 | \u001b[36mreturn\u001b[39m \u001b[32m{\u001b[39m\n    | ^\n  2 |     gtav\u001b[1m:\u001b[22m \u001b[32m{\u001b[39m\n  3 |         background\u001b[1m:\u001b[22m \u001b[32m{\u001b[39m\n  4 |             atlas\u001b[1m:\u001b[22m \u001b[31m'#0fa8d2'\u001b[39m\u001b[1m,\u001b[22m\u001b[0m\n    at Parser.pp.raise (/home/gpap/Code/www/rockstarmaps.local/node_modules/babylon/lib/parser/location.js:22:13)\n    at Parser.pp.parseReturnStatement (/home/gpap/Code/www/rockstarmaps.local/node_modules/babylon/lib/parser/statement.js:321:10)\n    at Parser.pp.parseStatement (/home/gpap/Code/www/rockstarmaps.local/node_modules/babylon/lib/parser/statement.js:107:19)\n    at Parser.parseStatement (/home/gpap/Code/www/rockstarmaps.local/node_modules/babylon/lib/plugins/flow.js:30:22)\n    at Parser.pp.parseBlockBody (/home/gpap/Code/www/rockstarmaps.local/node_modules/babylon/lib/parser/statement.js:529:21)\n    at Parser.pp.parseTopLevel (/home/gpap/Code/www/rockstarmaps.local/node_modules/babylon/lib/parser/statement.js:36:8)\n    at Parser.parse (/home/gpap/Code/www/rockstarmaps.local/node_modules/babylon/lib/parser/index.js:129:19)\n    at parse (/home/gpap/Code/www/rockstarmaps.local/node_modules/babylon/lib/index.js:47:47)\n    at File.parse (/home/gpap/Code/www/rockstarmaps.local/node_modules/babel-core/lib/transformation/file/index.js:517:34)\n    at File.parseCode (/home/gpap/Code/www/rockstarmaps.local/node_modules/babel-core/lib/transformation/file/index.js:603:20)");
+
+/***/ },
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";

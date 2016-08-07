@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<div id="map"></div>
+<div class="map-gtav" id="map"></div>
 @endsection

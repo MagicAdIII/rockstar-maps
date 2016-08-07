@@ -1,4 +1,5 @@
 import L from 'leaflet';
+import './config';
 
 /**
  * Temporary - should be cut into parts.
