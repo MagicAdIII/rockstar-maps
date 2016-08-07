@@ -31,10 +31,11 @@ gulp.task('webpack', function(cb) {
             path: path.join(__dirname, 'public/js'),
             filename: 'app.js'
         },
-       plugins: [
+        devtool: 'source-maps',
+        plugins: [
             new webpack.DefinePlugin({
                 'process.env': {
-                    'NODE_ENV': JSON.stringify(elixir.inProduction ? 'production' : 'development')
+                    'NODE_ENV': JSON.stringify(elixir.inProduction ? 'production' : '0elopment')
                 }
             })
         ],
@@ -72,9 +73,7 @@ gulp.task('webpack', function(cb) {
             ]
         }
     }, function(err, stats) {
-        if (err) {
-            throw new gutil.PluginError('webpack', err);
-        }
+        if (err) throw new gutil.PluginError('webpack', err);
 
         // @todo somehow pass this through elixir for pretty output
         gutil.log('[webpack]', stats.toString());

@@ -1,11 +1,8 @@
 import L from 'leaflet';
-import './config';
-
-/**
- * Temporary - should be cut into parts.
- */
+import config from './config';
 
 var mapContainer = 'map';
+var game = 'gtav';
 var spaceshipParts = L.layerGroup([
 	L.marker([ -1219, -3495.9 ]),
 	L.marker([ 606.9, -3250.19 ]),
@@ -117,25 +114,26 @@ var atlas = L.tileLayer('maps/gtav/atlas/{z}/{x}/{y}.png', {
     maxZoom: 5,
     noWrap: true,
     tms: true,
-    background: '#0fa8d2'
+    background: config[game].background.atlas
 });
 
-var satellite = L.tileLayer('maps/gtav/satellite/{z}/{x}/{y}.png', {
+var satellite = L.tileLayer('maps/' + game + '/satellite/{z}/{x}/{y}.png', {
     minZoom: 1,
     maxZoom: 5,
     noWrap: true,
     tms: true,
-    background: '#143d6b'
+    background: config[game].background.satellite
 });
 
-var road = L.tileLayer('maps/gtav/road/{z}/{x}/{y}.png', {
+var road = L.tileLayer('maps/' + game + '/road/{z}/{x}/{y}.png', {
     minZoom: 1,
     maxZoom: 5,
     noWrap: true,
     tms: true,
-    background: '#1862ad'
+    background: config[game].background.road
 });
 
+// @todo game related!
 // Custom Coordinate Reference System to match GTA V's world.
 var CRS = L.Util.extend({}, L.CRS, {
     projection: {
@@ -152,38 +150,44 @@ var CRS = L.Util.extend({}, L.CRS, {
 
 // Init the map.
 var map = L.map(mapContainer, {
-	layers: atlas,
+	layers: atlas, // why only 1?
 	attributionControl: false,
 	crs: CRS
 });
 
+// @todo game related, should be imported
 var baseMaps = {
 	"Műhold": satellite,
 	"Domborzat": atlas,
 	"Utak": road
 };
 
+// @todo game related, should be imported
 var overlays = {
 	"Spaceship parts": spaceshipParts,
 	"Letter scraps": letterScraps
 };
 
+/**
+ * GLOBAL stuff, should be in Map init entry
+ */
 var layersOptions = {
 	collapsed: false
 };
 
 var layers = L.control.layers(baseMaps, overlays, layersOptions).addTo(map);
 
+// @todo game related!
 map.setView([27.35, -752.05], 3);
 
 // Leaflet uses grey background by default when there are no more tiles to display.
 // This changes it to match the background colour of our tiles.
 map.on('baselayerchange', function (e) {
-    this.getContainer().style.backgroundColor = e.layer.options.background;
+    this.getContainer().style.backgroundColor = config[game].background;
 });
 
 var hash = new L.Hash(map);
 
-L.marker([0, 0]).bindPopup('Center of the game map [0.0, 0.0]').addTo(map);
+// L.marker([0, 0]).bindPopup('Center of the game map [0.0, 0.0]').addTo(map);
 
-atlas.bringToFront();
+// atlas.bringToFront();
