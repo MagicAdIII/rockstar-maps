@@ -83,10 +83,12 @@ gulp.task('webpack', function(cb) {
 });
 
 elixir(function(mix) {
+
     mix.sass('app.scss')
-       .task('webpack', 'resources/assets/js/**/*.js')
-       .version([
-            'css/app.css',
-            'js/app.js'
-        ]);
+        .task('webpack', 'resources/assets/js/**/*.js')
+        .version(['css/app.css', 'js/app.js'])
+        .browserSync({
+            proxy: process.env.APP_URL,
+            notify: false
+        });
 });
