@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Role;
-use App\Models\User;
-use App\Models\Game;
+use CockstarGays\Models\Role;
+use CockstarGays\Models\User;
+use CockstarGays\Models\Game;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
