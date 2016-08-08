@@ -21,6 +21,7 @@
             @if (Auth::user()->isAdmin())
                 <li><a href="{{ route('roles.index') }}">Roles</a></li>
                 <li><a href="{{ route('users.index') }}">Users</a></li>
+                <li><a href="{{ route('games.index') }}">Games</a></li>
             @endif
         @endif
     </ul>
