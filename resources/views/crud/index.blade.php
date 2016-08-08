@@ -2,13 +2,16 @@
 
 @section('content')
 <div class="container">
+
 	<h1>{{ trans($resource.'.plural') }} ({{ $count }})</h1>
 	<a href="{{ route($resource.'.create') }}" class="btn btn-success">{{ trans($resource.'.add_new') }}</a>
+	<hr>
+
 	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>#</th>
-				@foreach ($fields as $field)
+				@foreach ($listable as $field)
 					<th>{{ trans($resource.'.'.$field) }}</th>
 				@endforeach
 				<th>{{ trans('admin.actions') }}</th>
@@ -18,7 +21,7 @@
 			@forelse ($data as $item)
 				<tr>
 					<td>{{ $item->id or $loop->index }}</td>
-					@foreach ($fields as $field)
+					@foreach ($listable as $field)
 						<td>{{ $item->{$field} }}</td>
 					@endforeach
 					<td>
@@ -29,14 +32,14 @@
                                 'type' => 'submit',
                                 'class' => 'btn btn-danger btn-xs',
                                 'value' => 'delete',
-                                'onclick'=>'return confirm("Are you sure?")'
+                                'onclick' => 'return confirm("Are you sure?")'
                             ]); !!}
                         {!! Form::close() !!}
 					</td>
 				</tr>
 			@empty
 				<tr>
-					<td colspan="{{ count($fields) }}"><p>No data in {{ $resource }}.</p></td>
+					<td colspan="{{ count($listable) }}"><p>No data in {{ $resource }}.</p></td>
 				</tr>
 			@endforelse
 		</tbody>

@@ -29,18 +29,33 @@ class User extends Authenticatable
     ];
 
     /**
-     * These fields will be listed in admin lister.
+     * These fields will be listed in CRUD forms and tables.
      *
      * @var array
      */
-    public static function getListFields()
+    public $listable = [
+        'name',
+        'username',
+        'email',
+        'social_club',
+        'role_id'
+    ];
+
+    /**
+     * Returns mass assignable fields for forms.
+     *
+     * @todo abstract this! Will be the same in every Model!
+     *
+     * @return array
+     */
+    public function getFillable()
     {
         return [
-            'name',
-            'username',
-            'email',
-            'social_club',
-            'role_id'
+            'name'        => ['input' => 'text', 'attributes' => null],
+            'username'    => ['input' => 'text', 'attributes' => null],
+            'email'       => ['input' => 'email', 'attributes' => null],
+            'password'    => ['input' => 'password', 'attributes' => null],
+            'social_club' => ['input' => 'text', 'attributes' => null]
         ];
     }
 

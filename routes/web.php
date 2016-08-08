@@ -20,9 +20,9 @@ Route::get('{game}/map', 'MapsController@showMap');
 // @fixme ugly as fuck
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
 
-    Route::resource('roles', 'RolesController');
-    Route::resource('users', 'UsersController');
-    Route::resource('games', 'GamesController');
+    Route::resource('roles', 'RoleController');
+    Route::resource('users', 'UserController');
+    Route::resource('games', 'GameController');
 
     Route::resource('maps/markers', 'Maps\MarkerController');
     Route::resource('maps/groups', 'Maps\MarkerGroupController');

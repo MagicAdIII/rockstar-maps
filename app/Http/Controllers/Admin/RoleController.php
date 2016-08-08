@@ -2,24 +2,21 @@
 
 namespace CockstarGays\Http\Controllers\Admin;
 
-use CockstarGays\Http\Requests;
-use CockstarGays\Http\Controllers\Controller;
-
-use CockstarGays\Models\User;
-use Illuminate\Http\Request;
-use CockstarGays\Http\Requests\UserRequest;
-use Carbon\Carbon;
 use Session;
+use CockstarGays\Http\Requests\RoleRequest;
+use CockstarGays\Http\Controllers\Controller;
+use CockstarGays\Models\Role;
+use Carbon\Carbon;
 
-class UsersController extends Controller
+class RoleController extends Controller
 {
     private $resource;
     private $model;
 
     public function __construct()
     {
-        $this->resource = strtolower(str_plural(class_basename(User::class)));
-        $this->model = User::class;
+        $this->resource = strtolower(str_plural(class_basename(Role::class)));
+        $this->model = Role::class;
     }
 
     /**
@@ -29,8 +26,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $data = User::paginate(config('settings.pagination'));
-        $fields = User::getListFields();
+        $data = Role::paginate(config('settings.pagination'));
+        $fields = Role::getListFields();
 
         return view('admin.lister')->with([
             'resource' => $this->resource,
@@ -47,7 +44,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('roles.create');
     }
 
     /**
@@ -55,14 +52,14 @@ class UsersController extends Controller
      *
      * @return void
      */
-    public function store(UserRequest $request)
+    public function store(RoleRequest $request)
     {
 
-        User::create($request->all());
+        Role::create($request->all());
 
-        Session::flash('flash_message', 'User added!');
+        Session::flash('flash_message', 'Role added!');
 
-        return redirect('admin/users');
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -74,9 +71,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $role = Role::findOrFail($id);
 
-        return view('users.show', compact('user'));
+        return view('roles.show', compact('role'));
     }
 
     /**
@@ -88,9 +85,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $role = Role::findOrFail($id);
 
-        return view('users.edit', compact('user'));
+        return view('roles.edit', compact('role'));
     }
 
     /**
@@ -100,14 +97,15 @@ class UsersController extends Controller
      *
      * @return void
      */
-    public function update($id, UserRequest $request)
+    public function update($id, RoleRequest $request)
     {
-        $user = User::findOrFail($id);
-        $user->update($request->all());
 
-        Session::flash('flash_message', 'User updated!');
+        $role = Role::findOrFail($id);
+        $role->update($request->all());
 
-        return redirect('admin/users');
+        Session::flash('flash_message', 'Role updated!');
+
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -119,10 +117,10 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        Role::destroy($id);
 
-        Session::flash('flash_message', 'User deleted!');
+        Session::flash('flash_message', 'Role deleted!');
 
-        return redirect('admin/users');
+        return redirect()->route('roles.index');
     }
 }

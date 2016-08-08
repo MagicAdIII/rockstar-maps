@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
 
-class GamesController extends Controller
+class GameController extends Controller
 {
     private $resource;
     private $model;
