@@ -6,13 +6,13 @@ import config from '../config';
  * Configuration.
  */
 const GAME = config[window.GAMESLUG];
-var TRANSFORM = GAME.transform || null;
-L.Icon.Default.imagePath = '../public/build/markers';
+var TRANSFORM = GAME.transform;
+L.Icon.Default.imagePath = '../build/markers';
 
 /**
  * Create game-specific Coordinate Reference System.
  */
-var CRS = !TRANSFORM ? L.CRS.Simple : L.Util.extend({}, L.CRS, {
+var CRS = L.Util.extend({}, L.CRS, {
     projection: {
         project: function project(latlng) {
             return new L.Point(latlng.lat, latlng.lng);
@@ -50,6 +50,8 @@ const MAP = L.map(config.containerId, {
 	layers: baseMaps[GAME.defaultLayer],
 	attributionControl: false,
 });
+
+MAP.fitWorld();
 
 /**
  * This element contains the map.

@@ -73,7 +73,13 @@ const config = {
         },
         defaultLayer: 'road',
         defaultZoom: 3,
-        defaultView: [-29.14, -56.60],
+        defaultView: [-0.30, 0.34],
+        transform: {
+            a: 0.5,
+            b: 0.5,
+            c: 0.5,
+            d: 0.5
+        }
     }
 };
 
