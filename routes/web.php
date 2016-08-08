@@ -23,5 +23,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
     Route::resource('roles', 'RolesController');
     Route::resource('users', 'UsersController');
     Route::resource('games', 'GamesController');
+
+    Route::resource('maps/markers', 'Maps\MarkerController');
+    Route::resource('maps/groups', 'Maps\MarkerGroupController');
 });
 
