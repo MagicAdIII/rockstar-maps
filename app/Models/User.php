@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace CockstarGays\Models;
 
-use App\Models\Role;
+use CockstarGays\Models\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

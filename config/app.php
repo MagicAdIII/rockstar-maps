@@ -166,11 +166,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        CockstarGays\Providers\AppServiceProvider::class,
+        // CockstarGays\Providers\BroadcastServiceProvider::class,
+        CockstarGays\Providers\AuthServiceProvider::class,
+        CockstarGays\Providers\EventServiceProvider::class,
+        CockstarGays\Providers\RouteServiceProvider::class,
 
         /**
          * Vendor

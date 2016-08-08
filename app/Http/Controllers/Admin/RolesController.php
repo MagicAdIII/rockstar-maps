@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace CockstarGays\Http\Controllers\Admin;
 
 use Session;
-use App\Http\Requests\RoleRequest;
-use App\Http\Controllers\Controller;
-use App\Models\Role;
+use CockstarGays\Http\Requests\RoleRequest;
+use CockstarGays\Http\Controllers\Controller;
+use CockstarGays\Models\Role;
 use Carbon\Carbon;
 
 class RolesController extends Controller

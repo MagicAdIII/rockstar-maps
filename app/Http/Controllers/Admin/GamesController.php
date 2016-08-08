@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace CockstarGays\Http\Controllers\Admin;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use CockstarGays\Http\Requests;
+use CockstarGays\Http\Controllers\Controller;
 
-use App\Models\Game;
+use CockstarGays\Models\Game;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;

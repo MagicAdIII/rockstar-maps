@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Maps;
+namespace CockstarGays\Models\Maps;
 
-use App\Models\Maps\MarkerGroup;
+use CockstarGays\Models\Maps\MarkerGroup;
 use Illuminate\Database\Eloquent\Model;
 
 class Marker extends Model

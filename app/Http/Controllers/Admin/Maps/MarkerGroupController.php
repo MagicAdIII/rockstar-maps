@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Maps;
+namespace CockstarGays\Http\Controllers\Admin\Maps;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Models\Maps\MarkerGroup;
-use App\Http\Controllers\Controller;
+use CockstarGays\Http\Requests;
+use CockstarGays\Models\Maps\MarkerGroup;
+use CockstarGays\Http\Controllers\Controller;
 
 class MarkerGroupController extends Controller
 {

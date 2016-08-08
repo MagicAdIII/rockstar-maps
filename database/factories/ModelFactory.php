@@ -13,7 +13,7 @@ use Faker\Generator;
 |
 */
 
-$factory->define(App\Models\User::class, function (Generator $faker) {
+$factory->define(CockstarGays\Models\User::class, function (Generator $faker) {
     return [
         'name' => $faker->optional()->name,
         'username' => $faker->userName,
@@ -25,7 +25,7 @@ $factory->define(App\Models\User::class, function (Generator $faker) {
     ];
 });
 
-$factory->defineAs(App\Models\User::class, 'admin', function ($faker) {
+$factory->defineAs(CockstarGays\Models\User::class, 'admin', function ($faker) {
     return [
         'name' => 'Dan Houser',
         'username' => 'admin',
@@ -35,7 +35,7 @@ $factory->defineAs(App\Models\User::class, 'admin', function ($faker) {
     ];
 });
 
-$factory->defineAs(App\Models\User::class, 'user', function ($faker) {
+$factory->defineAs(CockstarGays\Models\User::class, 'user', function ($faker) {
     return [
         'name' => 'Sam Houser',
         'username' => 'user',

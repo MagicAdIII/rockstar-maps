@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace CockstarGays\Models;
 
-use App\Models\User;
+use CockstarGays\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model

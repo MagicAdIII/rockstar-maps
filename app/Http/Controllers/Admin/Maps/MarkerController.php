@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Maps;
+namespace CockstarGays\Http\Controllers\Admin\Maps;
 
 use Illuminate\Http\Request;
 
-use App\Models\Maps\Marker;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use CockstarGays\Models\Maps\Marker;
+use CockstarGays\Http\Requests;
+use CockstarGays\Http\Controllers\Controller;
 
 class MarkerController extends Controller
 {

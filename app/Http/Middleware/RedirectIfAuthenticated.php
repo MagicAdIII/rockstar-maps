@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace CockstarGays\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

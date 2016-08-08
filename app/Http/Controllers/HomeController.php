@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace CockstarGays\Http\Controllers;
 
-use App\Http\Requests;
+use CockstarGays\Http\Requests;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

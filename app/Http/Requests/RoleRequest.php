@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests;
+namespace CockstarGays\Http\Requests;
 
-use App\Http\Requests\Request;
+use CockstarGays\Http\Requests\Request;
 
 class RoleRequest extends Request
 {

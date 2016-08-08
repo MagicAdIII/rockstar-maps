@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Requests;
+namespace CockstarGays\Http\Requests;
 
-use App\Http\Requests\Request;
-use App\Models\User;
+use CockstarGays\Http\Requests\Request;
+use CockstarGays\Models\User;
 
 class UserRequest extends Request
 {

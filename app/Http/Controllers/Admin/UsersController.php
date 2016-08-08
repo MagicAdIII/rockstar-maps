@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace CockstarGays\Http\Controllers\Admin;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use CockstarGays\Http\Requests;
+use CockstarGays\Http\Controllers\Controller;
 
-use App\Models\User;
+use CockstarGays\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
+use CockstarGays\Http\Requests\UserRequest;
 use Carbon\Carbon;
 use Session;
 

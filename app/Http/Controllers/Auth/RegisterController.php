@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace CockstarGays\Http\Controllers\Auth;
 
-use App\Models\User;
+use CockstarGays\Models\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use CockstarGays\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace CockstarGays\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use CockstarGays\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller

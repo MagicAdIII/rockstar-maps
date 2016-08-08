@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace CockstarGays\Http\Controllers;
 
-use App\Models\Game;
-use App\Http\Requests;
+use CockstarGays\Models\Game;
+use CockstarGays\Http\Requests;
 use Illuminate\Http\Request;
 
 class MapsController extends Controller
