@@ -51,9 +51,9 @@ const config = {
                 maxZoom: 5,
             }
         },
+        defaultLayer: 'atlas',
         defaultZoom: 3,
         defaultView: [27.35, -752.05],
-        defaultLayer: 'atlas',
         transform: {
             a: 1 / 12446,
             b: 3756 / 8192,
@@ -63,13 +63,17 @@ const config = {
     },
 
     gtaiv: {
-        layers: ['road'],
+        layers: {
+            road: {
+                name: 'Roadmap',
+                bg: '#5D7C8D',
+                minZoom: 1,
+                maxZoom: 5,
+            },
+        },
         defaultLayer: 'road',
-        defaultZoom: 5,
-        defaultView: [0, 0],
-        background: {
-            road: '#000',
-        }
+        defaultZoom: 3,
+        defaultView: [-29.14, -56.60],
     }
 };
 

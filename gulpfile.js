@@ -81,6 +81,8 @@ gulp.task('webpack', function(cb) {
     });
 });
 
+// gulp.task('default', ['webpack']);
+
 elixir(function(mix) {
 
     mix.sass('app.scss')
