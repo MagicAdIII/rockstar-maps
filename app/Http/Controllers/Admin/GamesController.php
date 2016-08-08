@@ -12,6 +12,15 @@ use Session;
 
 class GamesController extends Controller
 {
+    private $resource;
+    private $model;
+
+    public function __construct()
+    {
+        $this->resource = strtolower(str_plural(class_basename(Game::class)));
+        $this->model = Game::class;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +28,15 @@ class GamesController extends Controller
      */
     public function index()
     {
-        $games = Game::paginate(15);
+        $data = Game::paginate(config('settings.pagination'));
+        $fields = Game::getListFields();
 
-        return view('games.index', compact('games'));
+        return view('admin.lister')->with([
+            'resource' => $this->resource,
+            'count' => (new $this->model)::count(),
+            'data' => $data,
+            'fields' => $fields
+        ]);
     }
 
     /**

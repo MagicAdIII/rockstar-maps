@@ -13,6 +13,15 @@ use Session;
 
 class UsersController extends Controller
 {
+    private $resource;
+    private $model;
+
+    public function __construct()
+    {
+        $this->resource = strtolower(str_plural(class_basename(User::class)));
+        $this->model = User::class;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,9 +29,15 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(15);
+        $data = User::paginate(config('settings.pagination'));
+        $fields = User::getListFields();
 
-        return view('users.index', compact('users'));
+        return view('admin.lister')->with([
+            'resource' => $this->resource,
+            'count' => (new $this->model)::count(),
+            'data' => $data,
+            'fields' => $fields
+        ]);
     }
 
     /**

@@ -29,6 +29,22 @@ class User extends Authenticatable
     ];
 
     /**
+     * These fields will be listed in admin lister.
+     *
+     * @var array
+     */
+    public static function getListFields()
+    {
+        return [
+            'name',
+            'username',
+            'email',
+            'social_club',
+            'role_id'
+        ];
+    }
+
+    /**
      * Checks user role if it's admin.
      *
      * @return boolean

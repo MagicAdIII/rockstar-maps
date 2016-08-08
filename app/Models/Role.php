@@ -16,6 +16,18 @@ class Role extends Model
     protected $fillable = ['name'];
 
     /**
+     * These fields will be listed in admin lister.
+     *
+     * @var array
+     */
+    public static function getListFields()
+    {
+        return [
+            'name'
+        ];
+    }
+
+    /**
      * Return the Users assigned to this Role.
      *
      * @return Collection

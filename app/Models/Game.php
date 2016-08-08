@@ -15,6 +15,18 @@ class Game extends Model
     protected $fillable = ['title', 'slug'];
 
     /**
+     * These fields will be listed in admin lister.
+     *
+     * @var array
+     */
+    public static function getListFields()
+    {
+        return [
+            'title', 'slug'
+        ];
+    }
+
+    /**
      * Get the route key for the model, so we can use
      * dependency injection in the route, like this: /map/gtav
      *

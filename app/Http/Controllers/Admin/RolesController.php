@@ -10,6 +10,15 @@ use Carbon\Carbon;
 
 class RolesController extends Controller
 {
+    private $resource;
+    private $model;
+
+    public function __construct()
+    {
+        $this->resource = strtolower(str_plural(class_basename(Role::class)));
+        $this->model = Role::class;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,9 +26,15 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Role::paginate(15);
+        $data = Role::paginate(config('settings.pagination'));
+        $fields = Role::getListFields();
 
-        return view('roles.index', compact('roles'));
+        return view('admin.lister')->with([
+            'resource' => $this->resource,
+            'count' => (new $this->model)::count(),
+            'data' => $data,
+            'fields' => $fields
+        ]);
     }
 
     /**
