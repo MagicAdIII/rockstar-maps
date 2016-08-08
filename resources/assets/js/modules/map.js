@@ -7,7 +7,6 @@ import config from '../config';
  */
 const GAME = config[window.GAMESLUG];
 var TRANSFORM = GAME.transform;
-L.Icon.Default.imagePath = '../build/markers';
 
 /**
  * Create game-specific Coordinate Reference System.
@@ -51,14 +50,12 @@ const MAP = L.map(config.containerId, {
 	attributionControl: false,
 });
 
-MAP.fitWorld();
-
 /**
  * This element contains the map.
  */
 const containerElement = MAP.getContainer();
 
-L.marker([0, 0]).bindPopup('[0, 0] coords for reference.').addTo(MAP);
+L.marker([0, 0], { icon: L.divIcon() }).bindPopup('[0, 0] coords for reference.').addTo(MAP);
 
 /**
  * Layer controls for base maps and overlays.
