@@ -42,24 +42,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Returns mass assignable fields for forms.
-     *
-     * @todo abstract this! Will be the same in every Model!
-     *
-     * @return array
-     */
-    public function getFillable()
-    {
-        return [
-            'name'        => ['input' => 'text', 'attributes' => null],
-            'username'    => ['input' => 'text', 'attributes' => null],
-            'email'       => ['input' => 'email', 'attributes' => null],
-            'password'    => ['input' => 'password', 'attributes' => null],
-            'social_club' => ['input' => 'text', 'attributes' => null]
-        ];
-    }
-
-    /**
      * Checks user role if it's admin.
      *
      * @return boolean

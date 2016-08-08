@@ -18,7 +18,7 @@ class UserController extends CrudController
      *
      * @return void
      */
-    function __construct()
+    function __construct(User $user)
     {
         $this->resource = 'users';
         $this->model = User::class;

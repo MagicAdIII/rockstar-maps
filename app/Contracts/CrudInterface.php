@@ -9,8 +9,8 @@ interface CrudInterface {
 
 	public function index();
 	public function create();
-	public function edit(Model $model);
-	public function show(Model $model);
+	public function edit($id);
+	public function show($id);
 
 	public function store(Request $request);
 	public function update(Model $model, Request $request);

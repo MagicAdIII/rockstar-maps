@@ -87,7 +87,7 @@ abstract class CrudController extends Controller implements CrudInterface
     {
         $this->instance->create($request->all());
 
-        session()->flash('success', trans($this->model . ' successfully added!'));
+        session()->flash('success', $this->model . ' successfully added!');
 
         return redirect()->route('crud.index', $this->model);
     }
@@ -98,8 +98,9 @@ abstract class CrudController extends Controller implements CrudInterface
      * @param Model
      * @return void
      */
-    public function show(Model $model)
+    public function show($id)
     {
+        $model = $this->instance->findOrFail($id);
         return view('crud.show', $model);
     }
 
@@ -109,8 +110,9 @@ abstract class CrudController extends Controller implements CrudInterface
      * @param Model
      * @return void
      */
-    public function edit(Model $model)
+    public function edit($id)
     {
+        $model = $this->instance->findOrFail($id);
         return view('crud.edit', $model);
     }
 
@@ -125,7 +127,7 @@ abstract class CrudController extends Controller implements CrudInterface
     {
         $model->update($request->all());
 
-        session()->flash('success', trans($this->model . ' successfully updated!'));
+        session()->flash('success', $this->model . ' successfully updated!');
 
         return redirect()->route('crud.index', $model);
     }
@@ -140,7 +142,7 @@ abstract class CrudController extends Controller implements CrudInterface
     {
         $model->delete();
 
-        session()->flash('success', trans($this->model . ' successfully deleted!'));
+        session()->flash('success', $this->model . ' successfully deleted!');
 
         return redirect()->route('crud.index', $model);
     }

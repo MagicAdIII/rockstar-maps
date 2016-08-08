@@ -39,7 +39,7 @@
 				</tr>
 			@empty
 				<tr>
-					<td colspan="{{ count($listable) }}"><p>No data in {{ $resource }}.</p></td>
+					<td colspan="{{ count($listable) + 2 }}"><p>No data in {{ $resource }}.</p></td>
 				</tr>
 			@endforelse
 		</tbody>
