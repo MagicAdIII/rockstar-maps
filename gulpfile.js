@@ -33,7 +33,8 @@ elixir(function(mix) {
             'js/app.js'
         ])
     }
-    else {
+
+    else if (elixir.isWatching()) {
         mix.browserSync({
             proxy: process.env.APP_URL,
             notify: false
