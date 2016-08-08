@@ -7,7 +7,7 @@
 
     {!! Form::model($game, [
         'method' => 'PATCH',
-        'url' => ['/admin/games', $game->id],
+        'url' => ['/admin/games', $game],
         'class' => 'form-horizontal'
     ]) !!}
 

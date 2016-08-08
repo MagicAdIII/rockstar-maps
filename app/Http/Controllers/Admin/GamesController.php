@@ -71,11 +71,9 @@ class GamesController extends Controller
      *
      * @return void
      */
-    public function show($id)
+    public function show(Game $game)
     {
-        $game = Game::findOrFail($id);
-
-        return view('games.show', compact('game'));
+        return view('games.show')->with(['game' => $game]);
     }
 
     /**
@@ -85,11 +83,9 @@ class GamesController extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit(Game $game)
     {
-        $game = Game::findOrFail($id);
-
-        return view('games.edit', compact('game'));
+        return view('games.edit')->with(['game' => $game]);
     }
 
     /**
@@ -99,10 +95,8 @@ class GamesController extends Controller
      *
      * @return void
      */
-    public function update($id, Request $request)
+    public function update(Game $game, Request $request)
     {
-
-        $game = Game::findOrFail($id);
         $game->update($request->all());
 
         Session::flash('flash_message', 'Game updated!');
@@ -117,9 +111,9 @@ class GamesController extends Controller
      *
      * @return void
      */
-    public function destroy($id)
+    public function destroy(Game $game)
     {
-        Game::destroy($id);
+        $game->delete();
 
         Session::flash('flash_message', 'Game deleted!');
 

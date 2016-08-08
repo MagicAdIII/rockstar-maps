@@ -4,10 +4,10 @@
 <div class="container">
 
     <h1>Game {{ $game->id }}
-        <a href="{{ url('/admin/games/' . $game->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Game"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+        <a href="{{ url('/admin/games/' . $game->slug . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Game"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
         {!! Form::open([
             'method'=>'DELETE',
-            'url' => ['/admin/games', $game->id],
+            'url' => ['/admin/games', $game],
             'style' => 'display:inline'
         ]) !!}
             {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true"/>', array(

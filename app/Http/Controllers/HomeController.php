@@ -2,6 +2,7 @@
 
 namespace CockstarGays\Http\Controllers;
 
+use CockstarGays\Models\Game;
 use CockstarGays\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $games = Game::all();
+
+        return view('home')->with([
+            'games' => $games,
+        ]);
     }
 }

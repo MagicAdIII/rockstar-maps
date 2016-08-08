@@ -6,7 +6,7 @@
 		<h1>Welcome to RockstarMaps!</h1>
 		<p>choose a game</p>
 
-		@foreach (App\Models\Game::all() as $game)
+		@foreach ($games as $game)
 			<a href="/{{ $game->slug }}/map">{{ $game->title }}</a>
 		@endforeach
 	</div>
