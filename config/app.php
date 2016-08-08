@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'My Application',
+    'name' => config('settings.sitename'),
 
     /*
     |--------------------------------------------------------------------------
@@ -175,7 +175,6 @@ return [
         /**
          * Vendor
          */
-        Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
     ],
