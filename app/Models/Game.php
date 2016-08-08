@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Game extends Model
 {
 
     /**
@@ -13,7 +12,7 @@ class Role extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['title', 'slug'];
 
     /**
      * These fields will be listed in admin lister.
@@ -23,17 +22,18 @@ class Role extends Model
     public static function getListFields()
     {
         return [
-            'name'
+            'title', 'slug'
         ];
     }
 
     /**
-     * Return the Users assigned to this Role.
+     * Get the route key for the model, so we can use
+     * dependency injection in the route, like this: /map/gtav
      *
-     * @return Collection
+     * @return string
      */
-    public function users()
+    public function getRouteKeyName()
     {
-        return $this->hasMany(User::class);
+        return 'slug';
     }
 }

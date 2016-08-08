@@ -15,6 +15,7 @@
     "js-cookie": "^2.1.2",
     "laravel-elixir": "^6.0.0-9",
     "laravel-elixir-webpack-official": "^1.0.2",
+    "laravel-elixir-browsersync-official": "^1.0.0",
     "leaflet": "^0.7.7",
     "leaflet-hash": "^0.2.1",
     "webpack": "^2.1.0-beta.20"

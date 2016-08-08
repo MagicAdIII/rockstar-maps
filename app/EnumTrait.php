@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * CRUD generator put this mess here!
+ * @todo  delete when removing crud generator!
+ */
+
 namespace App;
 
 use DB;

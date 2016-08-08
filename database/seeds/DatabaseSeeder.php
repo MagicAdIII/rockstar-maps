@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Role;
+use App\Models\User;
+use App\Models\Game;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,13 +15,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Create roles.
-        App\Models\Role::create(['id' => 1, 'name' => 'Admin']);
-        App\Models\Role::create(['id' => 2, 'name' => 'User']);
+        Role::create(['id' => 1, 'name' => 'Admin']);
+        Role::create(['id' => 2, 'name' => 'User']);
 
         // Create users.
-        factory(App\Models\User::class, 'admin')->create();
-        factory(App\Models\User::class, 'user')->create();
-        factory(App\Models\User::class, 10)->create();
+        factory(User::class, 'admin')->create();
+        factory(User::class, 'user')->create();
+        factory(User::class, 10)->create();
+
+        // Create games.
+        Game::create(['title' => 'Grand Theft Auto V', 'slug' => 'gtav']);
+        Game::create(['title' => 'Grand Theft Auto IV', 'slug' => 'gtaiv']);
 
     }
 }

@@ -5,21 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Models\User;
+use App\Models\Game;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
 use Carbon\Carbon;
 use Session;
 
-class UsersController extends Controller
+class GamesController extends Controller
 {
     private $resource;
     private $model;
 
     public function __construct()
     {
-        $this->resource = strtolower(str_plural(class_basename(User::class)));
-        $this->model = User::class;
+        $this->resource = strtolower(str_plural(class_basename(Game::class)));
+        $this->model = Game::class;
     }
 
     /**
@@ -29,8 +28,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $data = User::paginate(config('settings.pagination'));
-        $fields = User::getListFields();
+        $data = Game::paginate(config('settings.pagination'));
+        $fields = Game::getListFields();
 
         return view('admin.lister')->with([
             'resource' => $this->resource,
@@ -47,7 +46,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('games.create');
     }
 
     /**
@@ -55,14 +54,14 @@ class UsersController extends Controller
      *
      * @return void
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
 
-        User::create($request->all());
+        Game::create($request->all());
 
-        Session::flash('flash_message', 'User added!');
+        Session::flash('flash_message', 'Game added!');
 
-        return redirect('admin/users');
+        return redirect('admin/games');
     }
 
     /**
@@ -74,9 +73,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $game = Game::findOrFail($id);
 
-        return view('users.show', compact('user'));
+        return view('games.show', compact('game'));
     }
 
     /**
@@ -88,9 +87,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $game = Game::findOrFail($id);
 
-        return view('users.edit', compact('user'));
+        return view('games.edit', compact('game'));
     }
 
     /**
@@ -100,14 +99,15 @@ class UsersController extends Controller
      *
      * @return void
      */
-    public function update($id, UserRequest $request)
+    public function update($id, Request $request)
     {
-        $user = User::findOrFail($id);
-        $user->update($request->all());
 
-        Session::flash('flash_message', 'User updated!');
+        $game = Game::findOrFail($id);
+        $game->update($request->all());
 
-        return redirect('admin/users');
+        Session::flash('flash_message', 'Game updated!');
+
+        return redirect()->route('games.index');
     }
 
     /**
@@ -119,10 +119,10 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        Game::destroy($id);
 
-        Session::flash('flash_message', 'User deleted!');
+        Session::flash('flash_message', 'Game deleted!');
 
-        return redirect('admin/users');
+        return redirect()->route('games.index');
     }
 }

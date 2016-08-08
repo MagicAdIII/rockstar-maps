@@ -1,21 +1,14 @@
-// Variables
-@import "variables";
-
 // Vendor
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "node_modules/leaflet/dist/leaflet";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-// 8===o
-body {
-    padding: 0;
-    margin: 0;
-}
-html, body, #map {
-    height: 100%;
-    font-family: Helvetica, Arial, sans-serif; font-size: 12px;
-    overflow: hidden;
-}
+// Utility
+@import "utils/vars";
+@import "utils/mixins";
 
-.leaflet-container {
-	background-color: #0fa8d2;
-}
+// Base
+@import "base/elements";
+@import "base/maps";
+
+// Components
+// @import "components/navbar";

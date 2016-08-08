@@ -15,10 +15,13 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
+Route::get('{game}/map', 'MapsController@showMap');
+
 // @fixme ugly as fuck
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
 
     Route::resource('roles', 'RolesController');
     Route::resource('users', 'UsersController');
+    Route::resource('games', 'GamesController');
 });
 
