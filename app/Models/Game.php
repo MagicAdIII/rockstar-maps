@@ -15,16 +15,14 @@ class Game extends Model
     protected $fillable = ['title', 'slug'];
 
     /**
-     * These fields will be listed in admin lister.
+     * These fields will be listed in CRUD forms and tables.
      *
      * @var array
      */
-    public static function getListFields()
-    {
-        return [
-            'title', 'slug'
-        ];
-    }
+    public $listable = [
+        'title',
+        'slug',
+    ];
 
     /**
      * Get the route key for the model, so we can use

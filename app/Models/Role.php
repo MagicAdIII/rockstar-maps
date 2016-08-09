@@ -16,16 +16,13 @@ class Role extends Model
     protected $fillable = ['name'];
 
     /**
-     * These fields will be listed in admin lister.
+     * These fields will be listed in CRUD forms and tables.
      *
      * @var array
      */
-    public static function getListFields()
-    {
-        return [
-            'name'
-        ];
-    }
+    public $listable = [
+        'name',
+    ];
 
     /**
      * Return the Users assigned to this Role.

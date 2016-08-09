@@ -2,9 +2,12 @@
 
 namespace CockstarGays\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Validator;
+use CockstarGays\Http\Requests\Request;
 use Illuminate\Database\Eloquent\Model;
 use CockstarGays\Contracts\CrudInterface;
+use CockstarGays\Exceptions\CrudException;
+use Illuminate\Support\Facades\Route;
 
 /**
  * CrudController
@@ -32,6 +35,20 @@ abstract class CrudController extends Controller implements CrudInterface
     protected $model;
 
     /**
+     * Instance of the model's Form Request class.
+     *
+     * @var Request
+     */
+    protected $formRequest;
+
+    /**
+     * Name of the Request class.
+     *
+     * @var string
+     */
+    protected $requestClass;
+
+    /**
      * Model instance.
      *
      * @var Model
@@ -45,7 +62,13 @@ abstract class CrudController extends Controller implements CrudInterface
      */
     function __construct()
     {
+        $this->requestClass = 'CockstarGays\Http\Requests\\' . class_basename($this->model) . 'Request';
+        $this->formRequest = new $this->requestClass;
         $this->instance = new $this->model;
+
+        if ( ! property_exists($this->instance, 'listable')) {
+            throw new CrudException("Listable field array not found in model {$this->model}.");
+        }
     }
 
     /**
@@ -57,9 +80,8 @@ abstract class CrudController extends Controller implements CrudInterface
     {
         return view('crud.index')->with([
             'resource' => $this->resource,
-            'count' => $this->instance->count(),
-            'data' => $this->instance->paginate(config('settings.pagination')),
-            'listable' => $this->instance->listable
+            'model' => $this->instance,
+            'items' => $this->instance->paginate(config('settings.pagination'))
         ]);
     }
 
@@ -89,7 +111,7 @@ abstract class CrudController extends Controller implements CrudInterface
 
         session()->flash('success', $this->model . ' successfully added!');
 
-        return redirect()->route('crud.index', $this->model);
+        return redirect()->route($this->resource.'.index');
     }
 
     /**
@@ -98,10 +120,12 @@ abstract class CrudController extends Controller implements CrudInterface
      * @param Model
      * @return void
      */
-    public function show($id)
+    public function show(Model $model)
     {
-        $model = $this->instance->findOrFail($id);
-        return view('crud.show', $model);
+        return view('crud.show')->with([
+            'resource' => $this->resource,
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -110,10 +134,12 @@ abstract class CrudController extends Controller implements CrudInterface
      * @param Model
      * @return void
      */
-    public function edit($id)
+    public function edit(Model $model)
     {
-        $model = $this->instance->findOrFail($id);
-        return view('crud.edit', $model);
+        return view('crud.edit')->with([
+            'resource' => $this->resource,
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -129,7 +155,7 @@ abstract class CrudController extends Controller implements CrudInterface
 
         session()->flash('success', $this->model . ' successfully updated!');
 
-        return redirect()->route('crud.index', $model);
+        return redirect()->route($this->resource.'.index');
     }
 
     /**
@@ -144,7 +170,7 @@ abstract class CrudController extends Controller implements CrudInterface
 
         session()->flash('success', $this->model . ' successfully deleted!');
 
-        return redirect()->route('crud.index', $model);
+        return redirect()->route($this->resource.'.index');
     }
 
 }

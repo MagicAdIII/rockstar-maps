@@ -3,124 +3,22 @@
 namespace CockstarGays\Http\Controllers\Admin;
 
 use Session;
-use CockstarGays\Http\Requests\RoleRequest;
-use CockstarGays\Http\Controllers\Controller;
+use CockstarGays\Http\Controllers\CrudController;
 use CockstarGays\Models\Role;
 use Carbon\Carbon;
 
-class RoleController extends Controller
+class RoleController extends CrudController
 {
-    private $resource;
-    private $model;
 
-    public function __construct()
+    /**
+     * Set the resource and model names.
+     *
+     * @return void
+     */
+    function __construct()
     {
-        $this->resource = strtolower(str_plural(class_basename(Role::class)));
+        $this->resource = 'roles'; // @todo
         $this->model = Role::class;
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return void
-     */
-    public function index()
-    {
-        $data = Role::paginate(config('settings.pagination'));
-        $fields = Role::getListFields();
-
-        return view('admin.lister')->with([
-            'resource' => $this->resource,
-            'count' => (new $this->model)::count(),
-            'data' => $data,
-            'fields' => $fields
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return void
-     */
-    public function create()
-    {
-        return view('roles.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return void
-     */
-    public function store(RoleRequest $request)
-    {
-
-        Role::create($request->all());
-
-        Session::flash('flash_message', 'Role added!');
-
-        return redirect()->route('roles.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     *
-     * @return void
-     */
-    public function show($id)
-    {
-        $role = Role::findOrFail($id);
-
-        return view('roles.show', compact('role'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     *
-     * @return void
-     */
-    public function edit($id)
-    {
-        $role = Role::findOrFail($id);
-
-        return view('roles.edit', compact('role'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     *
-     * @return void
-     */
-    public function update($id, RoleRequest $request)
-    {
-
-        $role = Role::findOrFail($id);
-        $role->update($request->all());
-
-        Session::flash('flash_message', 'Role updated!');
-
-        return redirect()->route('roles.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     *
-     * @return void
-     */
-    public function destroy($id)
-    {
-        Role::destroy($id);
-
-        Session::flash('flash_message', 'Role deleted!');
-
-        return redirect()->route('roles.index');
+        parent::__construct();
     }
 }
