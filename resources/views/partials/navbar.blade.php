@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-bottom">
+<nav class="navbar navbar-default navbar-static-top">
     <div class="navbar-header">
     <!-- Right Side Of Navbar -->
     <ul class="nav navbar-nav navbar-right">
