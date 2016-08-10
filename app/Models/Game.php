@@ -12,7 +12,7 @@ class Game extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'slug'];
+    protected $fillable = ['title', 'slug', 'active'];
 
     /**
      * These fields will be listed in CRUD forms and tables.
@@ -22,6 +22,7 @@ class Game extends Model
     public $listable = [
         'title',
         'slug',
+        'active'
     ];
 
     /**

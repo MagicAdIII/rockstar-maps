@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('social_club')->nullable();
 
+            $table->boolean('active')->default(true);
+
             $table->integer('role_id')->unsigned()->default(1);
             $table->foreign('role_id')->references('id')->on('roles');
 

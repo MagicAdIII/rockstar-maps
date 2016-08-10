@@ -20,12 +20,14 @@ class MarkerGroup extends Model
      *
      * @var array
      */
-    public static function getListFields()
-    {
-        return [
-            'title', 'slug', 'description', 'active', 'parent_id', 'game_id'
-        ];
-    }
+    public $listable = [
+        'title',
+        'slug',
+        'description',
+        'parent_id',
+        'game_id',
+        'active',
+    ];
 
     /**
      * Retrieve all the markers in a group.

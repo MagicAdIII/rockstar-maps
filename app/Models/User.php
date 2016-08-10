@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password', 'social_club'
+        'name', 'username', 'email', 'password', 'social_club', 'active'
     ];
 
     /**
@@ -38,7 +38,8 @@ class User extends Authenticatable
         'username',
         'email',
         'social_club',
-        'role_id'
+        'role_id',
+        'active'
     ];
 
     /**
@@ -48,6 +49,15 @@ class User extends Authenticatable
      */
     public function isAdmin() {
         return $this->role_id === 1;
+    }
+
+    /**
+     * Checks if user is banned (= not active).
+     *
+     * @return boolean
+     */
+    public function isBanned() {
+        return false === $this->active;
     }
 
     /**

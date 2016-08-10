@@ -21,7 +21,15 @@ class Marker extends Model
      * @var array
      */
     public $listable = [
-        'title', 'description', 'x', 'y', 'z', 'checkable', 'active', 'group_id', 'user_id'
+        'title',
+        'description',
+        'x',
+        'y',
+        'z',
+        'checkable',
+        'group_id',
+        'user_id',
+        'active',
     ];
 
     /**
