@@ -1,5 +1,10 @@
 <!doctype html>
-<html lang="en">
+{{-- @todo UGLY --}}
+@if (request()->is('*/map'))
+<html lang="{{ config('app.locale') }}" class="map-layout">
+@else
+<html lang="{{ config('app.locale') }}">
+@endif
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +12,17 @@
 
     <title>Rockstar Maps</title>
 
-    <!-- Styles -->
     <link href="{{ elixirAsset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     @include('partials.navbar')
     @yield('content')
 
-    <!-- Scripts -->
-    @stack('scripts')
-    <script src="{{ elixirAsset('js/app.js') }}"></script>
+    {{-- @todo UGLY --}}
+    @if (request()->is('*/map'))
+        @stack('scripts')
+        <script src="{{ elixirAsset('js/app.js') }}"></script>
+    @endif
+
 </body>
 </html>

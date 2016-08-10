@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div id="map" data-game="{{ $game }}"></div>
+    <div id="map" data-game="{{ $game }}"></div>
 @endsection
 
 {{-- @todo ugly as fuck! --}}

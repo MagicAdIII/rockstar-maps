@@ -1,3 +1,14 @@
+body {
+    padding: 0;
+}
+
+html.map-layout {
+    &, body, #map {
+        height: 100%;
+        overflow: hidden;
+    }
+}
+
 .map-gtav {
     background-color: $map-gtav-atlas;
 }
