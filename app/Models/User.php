@@ -2,7 +2,7 @@
 
 namespace CockstarGays\Models;
 
-use CockstarGays\Models\Role;
+use CockstarGays\Models\{Role, Marker};
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -63,10 +63,20 @@ class User extends Authenticatable
     /**
      * Return the Users assigned to this Role.
      *
-     * @return Role
+     * @return Relationship
      */
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    /**
+     * A user can define many Markers.
+     *
+     * @return Relationship
+     */
+    public function markers()
+    {
+        return $this->belongsToMany(Marker::class);
     }
 }

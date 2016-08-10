@@ -38,4 +38,14 @@ class MarkerGroup extends Model
     {
         return $this->hasMany(Marker::class);
     }
+
+    /**
+     * A marker group should belong to one game only.
+     *
+     * @return Relationship
+     */
+    public function game()
+    {
+        return $this->belongsTo(Game::class);
+    }
 }

@@ -20,7 +20,7 @@ class CreateMarkerGroupsTable extends Migration
             $table->string('slug');
             $table->text('description')->nullable();
 
-            $table->morphs('taggable');
+            // $table->morphs('taggable');
             $table->boolean('active')->default(true);
 
             $table->integer('parent_id')->unsigned()->nullable();

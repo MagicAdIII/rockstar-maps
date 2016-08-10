@@ -21,16 +21,16 @@ class CreateMarkersTable extends Migration
 
             $table->double('x');
             $table->double('y');
-            $table->double('z')->default(0);
+            $table->double('z')->nullable();
 
-            $table->morphs('taggable');
+            // $table->morphs('taggable');
             $table->boolean('checkable')->default(false);
             $table->boolean('active')->default(true);
 
-            $table->integer('group_id')->unsigned()->nullable();
-            $table->foreign('group_id')->references('id')->on('marker_groups');
+            $table->integer('marker_group_id')->unsigned()->nullable();
+            $table->foreign('marker_group_id')->references('id')->on('marker_groups');
 
-            $table->integer('user_id')->unsigned()->default(0);
+            $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
@@ -45,8 +45,8 @@ class CreateMarkersTable extends Migration
     public function down()
     {
         Schema::drop('markers', function(Blueprint $table) {
-            $table->dropForeign(['group_id']);
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['marker_group_id']);
         });
     }
 }

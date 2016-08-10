@@ -22,7 +22,7 @@ class Marker extends Model
      */
     public $listable = [
         'title',
-        'description',
+        // 'description',
         'x',
         'y',
         'z',
