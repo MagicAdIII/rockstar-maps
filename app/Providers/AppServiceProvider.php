@@ -2,7 +2,11 @@
 
 namespace CockstarGays\Providers;
 
+use CockstarGays\Models\User;
 use Illuminate\Support\ServiceProvider;
+use CockstarGays\Http\Requests\Request;
+use CockstarGays\Http\Controllers\CrudController;
+use CockstarGays\Contracts\CrudInterface;
 
 class AppServiceProvider extends ServiceProvider
 {

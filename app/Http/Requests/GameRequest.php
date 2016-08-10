@@ -4,8 +4,9 @@ namespace CockstarGays\Http\Requests;
 
 use CockstarGays\Http\Requests\Request;
 
-class RoleRequest extends Request
+class GameRequest extends Request
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,12 +26,14 @@ class RoleRequest extends Request
     {
         $route = $this->route()->getName();
 
-        if ($route === 'roles.store') return [
-            'name' => 'required|unique:roles,name',
+        if ($route === 'games.store') return [
+            'title' => 'required|unique:games,title',
+            'slug' => 'required|alpha_dash|unique:games,slug',
         ];
 
-        if ($route === 'roles.update') return [
-            'name' => 'required|unique:roles,name,' . $this->role->id,
+        if ($route === 'games.update') return [
+            'title' => 'required|unique:games,title,' . $this->game->id,
+            'slug' => 'required|alpha_dash|unique:games,slug,' . $this->game->id,
         ];
 
         return [];

@@ -3,6 +3,8 @@
 namespace CockstarGays\Providers;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Routing\Router;
+use Illuminate\Http\Request;
 use CockstarGays\Http\Requests\Request as FormRequest;
 use CockstarGays\Http\Requests\UserRequest;
 use CockstarGays\Controllers\CrudController;

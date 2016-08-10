@@ -3,19 +3,20 @@
 namespace CockstarGays\Http\Controllers\Admin;
 
 use CockstarGays\Http\Requests;
-use CockstarGays\Http\Controllers\Controller;
+use CockstarGays\Http\Controllers\CrudController;
 
 use CockstarGays\Models\Game;
-use Illuminate\Http\Request;
+use CockstarGays\Http\Requests\GameRequest;
 use Carbon\Carbon;
 use Session;
 
-class GameController extends Controller
+class GameController extends CrudController
 {
     /**
-     * Name of the model class which this controller uses.
+     * Name of the Model and From Request classes.
      *
      * @var string
      */
     protected static $model = Game::class;
+    protected static $validation = GameRequest::class;
 }

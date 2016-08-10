@@ -24,22 +24,20 @@ class UserRequest extends Request
      */
     public function rules()
     {
-        // $route = $this->route()->getName();
+        $route = $this->route()->getName();
 
-        // if ($route === 'users.store') {
-            return [
-                'username' => 'required|unique:users',
-                'email' => 'required|email|unique:users',
-                'password' => 'required|confirmed'
-            ];
-        // }
+        if ($route === 'users.store') return [
+            'username' => 'required|alpha_dash|unique:users,username',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|confirmed'
+        ];
 
-        // if ($route === 'users.update') {
-        //     return [
-        //         'username' => 'required|unique:users,username,' . $this->user,
-        //         'email' => 'required|email|unique:users,email,' . $this->user,
-        //         'password' => 'confirmed'
-        //     ];
-        // }
+        if ($route === 'users.update') return [
+            'username' => 'required|alpha_dash|unique:users,username,' . $this->user->id,
+            'email' => 'required|email|unique:users,email,' . $this->user->id,
+            'password' => 'confirmed'
+        ];
+
+        return [];
     }
 }

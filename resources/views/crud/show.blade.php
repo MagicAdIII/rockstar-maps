@@ -11,7 +11,7 @@
 		    @foreach ($model->listable as $field)
 		    	<tr>
 		    		<th>{{ trans($resource.'.'.$field) }}</th>
-		    		<td>{{ $model->value($field) }}</td>
+		    		<td>{{ $model->{$field} }}</td>
 		    	</tr>
 		    @endforeach
 		</tbody>

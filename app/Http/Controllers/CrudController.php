@@ -2,7 +2,6 @@
 
 namespace CockstarGays\Http\Controllers;
 
-use Validator;
 use CockstarGays\Http\Requests\Request;
 use Illuminate\Database\Eloquent\Model;
 use CockstarGays\Contracts\CrudInterface;
@@ -29,20 +28,6 @@ abstract class CrudController extends Controller implements CrudInterface
     protected $resource;
 
     /**
-     * Instance of the model's Form Request class.
-     *
-     * @var Request
-     */
-    protected $formRequest;
-
-    /**
-     * Name of the Request class.
-     *
-     * @var string
-     */
-    protected $requestClass;
-
-    /**
      * Model instance.
      *
      * @var Model
@@ -56,10 +41,13 @@ abstract class CrudController extends Controller implements CrudInterface
      */
     function __construct()
     {
-        // $this->requestClass = 'CockstarGays\Http\Requests\\' . class_basename(static::$model) . 'Request';
-        // $this->formRequest = new $this->requestClass;
-        $this->instance = new static::$model;
         $this->resource = str_plural(strtolower(class_basename(static::$model)));
+        $this->instance = new static::$model;
+
+        // @todo is this ok?
+        app()->bind(Request::class, function ($app) {
+            return $app->make(static::$validation);
+        });
 
         if ( ! property_exists($this->instance, 'listable')) {
             throw new CrudException("Listable field array not found in model {static::$model}.");

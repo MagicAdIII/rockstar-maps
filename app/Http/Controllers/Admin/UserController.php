@@ -4,9 +4,7 @@ namespace CockstarGays\Http\Controllers\Admin;
 
 use Session;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use CockstarGays\Models\User;
-use CockstarGays\Http\Requests;
 use CockstarGays\Http\Requests\UserRequest;
 use CockstarGays\Http\Controllers\CrudController;
 
@@ -14,9 +12,10 @@ class UserController extends CrudController
 {
 
     /**
-     * Name of the model class which this controller uses.
+     * Name of the Model and From Request classes.
      *
      * @var string
      */
     protected static $model = User::class;
+    protected static $validation = UserRequest::class;
 }
