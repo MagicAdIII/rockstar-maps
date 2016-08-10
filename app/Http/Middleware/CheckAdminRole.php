@@ -16,7 +16,7 @@ class CheckAdminRole
      */
     public function handle($request, Closure $next)
     {
-        if (! Auth::user()->isAdmin()) {
+        if (! Auth::check() || ! Auth::user()->isAdmin()) {
             abort(403, 'Unauthorized!');
         }
         return $next($request);
