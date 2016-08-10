@@ -1,5 +1,5 @@
 var elixir = require('laravel-elixir');
-var webpack = require('webpack');
+// var webpack = require('webpack');
 var gutil = require('gulp-util');
 var path = require('path');
 var plugins = require('gulp-load-plugins')();
