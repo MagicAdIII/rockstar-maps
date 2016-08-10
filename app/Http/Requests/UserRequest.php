@@ -7,11 +7,6 @@ use CockstarGays\Http\Requests\Request;
 class UserRequest extends Request
 {
 
-    function __construct()
-    {
-        dump('adfsdf');
-    }
-
     /**
      * Determine if the user is authorized to make this request.
      *

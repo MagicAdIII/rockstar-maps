@@ -11,14 +11,9 @@ class RoleController extends CrudController
 {
 
     /**
-     * Set the resource and model names.
+     * Name of the model class which this controller uses.
      *
-     * @return void
+     * @var string
      */
-    function __construct()
-    {
-        $this->resource = 'roles'; // @todo
-        $this->model = Role::class;
-        parent::__construct();
-    }
+    protected static $model = Role::class;
 }

@@ -22,17 +22,11 @@ abstract class CrudController extends Controller implements CrudInterface
 {
     /**
      * Name of the resource, in lowercase plural form.
+     * (e.g. User -> users)
      *
      * @var string
      */
     protected $resource;
-
-    /**
-     * Name of the model class.
-     *
-     * @var string
-     */
-    protected $model;
 
     /**
      * Instance of the model's Form Request class.
@@ -62,12 +56,13 @@ abstract class CrudController extends Controller implements CrudInterface
      */
     function __construct()
     {
-        $this->requestClass = 'CockstarGays\Http\Requests\\' . class_basename($this->model) . 'Request';
-        $this->formRequest = new $this->requestClass;
-        $this->instance = new $this->model;
+        // $this->requestClass = 'CockstarGays\Http\Requests\\' . class_basename(static::$model) . 'Request';
+        // $this->formRequest = new $this->requestClass;
+        $this->instance = new static::$model;
+        $this->resource = str_plural(strtolower(class_basename(static::$model)));
 
         if ( ! property_exists($this->instance, 'listable')) {
-            throw new CrudException("Listable field array not found in model {$this->model}.");
+            throw new CrudException("Listable field array not found in model {static::$model}.");
         }
     }
 
@@ -109,7 +104,7 @@ abstract class CrudController extends Controller implements CrudInterface
     {
         $this->instance->create($request->all());
 
-        session()->flash('success', $this->model . ' successfully added!');
+        session()->flash('success', static::$model . ' successfully added!');
 
         return redirect()->route($this->resource.'.index');
     }
@@ -153,7 +148,7 @@ abstract class CrudController extends Controller implements CrudInterface
     {
         $model->update($request->all());
 
-        session()->flash('success', $this->model . ' successfully updated!');
+        session()->flash('success', static::$model . ' successfully updated!');
 
         return redirect()->route($this->resource.'.index');
     }
@@ -168,7 +163,7 @@ abstract class CrudController extends Controller implements CrudInterface
     {
         $model->delete();
 
-        session()->flash('success', $this->model . ' successfully deleted!');
+        session()->flash('success', static::$model . ' successfully deleted!');
 
         return redirect()->route($this->resource.'.index');
     }
