@@ -24,13 +24,19 @@ class DatabaseSeeder extends Seeder
         Game::create(['title' => 'Grand Theft Auto IV', 'slug' => 'gtaiv', 'active' => true]);
 
         // Create marker groups and save them 0-15 markers each.
-        factory(MarkerGroup::class, 10)->create()->each(function ($group) use ($faker) {
+        $groups = factory(MarkerGroup::class, 15)->create()->each(function ($group) use ($faker) {
             $random = $faker->numberBetween(0, 15);
             foreach (range(0, $random) as $i) {
                 $group->markers()->save(factory(Marker::class)->make());
             }
-            $group->game()->associate(Game::pluck('id')->random(1))->save();
+            $group->game()->associate(1 /* gtav */)->save();
         });
+
+        // $groups->filter(function ($value, $key) {
+        //     return $key > 3;
+        // })->each(function ($group) use ($faker) {
+        //     $group->parent()->associate($faker->numberBetween(1, 4))->save();
+        // });
 
         // Create users.
         factory(User::class, 'admin')->create();

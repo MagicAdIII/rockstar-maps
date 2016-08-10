@@ -54,8 +54,9 @@ class MarkerGroup extends Model
      *
      * @return Relationship
      */
-    public function parent()
-    {
-        return $this->belongsTo(MarkerGroup::class);
-    }
+    // public function parent()
+    // {
+    //     return $this->belongsTo(MarkerGroup::class, 'parent_id');
+    // }
+
 }

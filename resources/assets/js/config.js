@@ -14,7 +14,8 @@ const config = {
      * @type {Object}
      */
     layersOptions: {
-        collapsed: false
+        collapsed: false,
+        groupCheckboxes: true
     },
 
     /**
@@ -51,7 +52,7 @@ const config = {
                 maxZoom: 5,
             }
         },
-        defaultLayer: 'atlas',
+        defaultLayer: 'Atlas',
         defaultZoom: 3,
         defaultView: [27.35, -752.05],
         transform: {

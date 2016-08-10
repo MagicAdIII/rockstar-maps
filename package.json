@@ -23,6 +23,7 @@
   "dependencies": {
     "dotenv": "^2.0.0",
     "gulp-exec": "^2.1.2",
-    "gulp-image": "^2.4.1"
+    "gulp-image": "^2.4.1",
+    "leaflet-groupedlayercontrol": "^0.5.0"
   }
 }

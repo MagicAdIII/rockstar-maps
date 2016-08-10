@@ -11,9 +11,7 @@ class APIController extends Controller
 {
     public function games()
     {
-        $games = Game::all();
-
-        return response()->json($games);
+        return response()->json(Game::all());
     }
 
     public function markers(Game $game)
@@ -24,5 +22,14 @@ class APIController extends Controller
     public function markerGroups(Game $game)
     {
         return response()->json($game->markerGroups);
+    }
+
+    public function tree(Game $game)
+    {
+        return response()->json($game->markerGroups()
+            ->with(['markers' => function ($query) {
+                $query->select(['marker_group_id', 'id', 'title', 'description', 'x', 'y']);
+            }])
+            ->get(['id', 'title']));
     }
 }

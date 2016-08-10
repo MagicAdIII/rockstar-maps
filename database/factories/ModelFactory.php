@@ -42,7 +42,7 @@ $factory->defineAs(User::class, 'user', function ($faker) {
  * Marker factories.
  */
 $factory->define(MarkerGroup::class, function (Generator $faker) {
-    $title = $faker->sentence(3);
+    $title = $faker->streetName;
     return [
         'title' => $title,
         'slug' => str_slug($title),
@@ -54,10 +54,10 @@ $factory->define(MarkerGroup::class, function (Generator $faker) {
 
 $factory->define(Marker::class, function (Generator $faker) {
     return [
-        'title' => $faker->sentence(3),
+        'title' => $faker->streetName,
         'description' => $faker->optional()->paragraph,
-        'x' => $faker->latitude,
-        'y' => $faker->longitude,
+        'x' => $faker->latitude(-4200, 3800), // gtav
+        'y' => $faker->longitude(-3400, 8200), // gtav
         'z' => null,
         'checkable' => $faker->boolean,
         'active' => $faker->boolean(90),

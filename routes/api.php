@@ -15,7 +15,8 @@ use Illuminate\Http\Request;
 
 Route::get('games', 'APIController@games');
 
-Route::group(['prefix' => '{game}'], function () {
+Route::group(['prefix' => 'maps/{game}'], function () {
     Route::get('markergroups', 'APIController@markerGroups');
     Route::get('markers', 'APIController@markers');
+    Route::get('tree', 'APIController@tree');
 });

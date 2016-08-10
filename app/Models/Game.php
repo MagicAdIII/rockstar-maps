@@ -46,4 +46,5 @@ class Game extends Model
     {
         return $this->hasManyThrough(Marker::class, MarkerGroup::class);
     }
+
 }
