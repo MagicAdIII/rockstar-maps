@@ -113,7 +113,7 @@ abstract class CrudController extends Controller implements CrudInterface
     {
         $this->instance->create($request->all());
 
-        session()->flash('success', static::$model . ' successfully added!');
+        session()->flash('messages.success', class_basename(static::$model) . ' successfully added!');
 
         return redirect()->route($this->resource.'.index');
     }
@@ -157,7 +157,7 @@ abstract class CrudController extends Controller implements CrudInterface
     {
         $model->update($request->all());
 
-        session()->flash('success', static::$model . ' successfully updated!');
+        session()->flash('messages.success', class_basename(static::$model) . ' successfully updated!');
 
         return redirect()->route($this->resource.'.index');
     }
@@ -172,7 +172,7 @@ abstract class CrudController extends Controller implements CrudInterface
     {
         $model->delete();
 
-        session()->flash('success', static::$model . ' successfully deleted!');
+        session()->flash('messages.success', class_basename(static::$model) . ' successfully deleted!');
 
         return redirect()->route($this->resource.'.index');
     }
