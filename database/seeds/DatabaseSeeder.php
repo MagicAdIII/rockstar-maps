@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         Role::create(['id' => 2, 'name' => 'User']);
 
         // Create games.
-        Game::create(['title' => 'Grand Theft Auto V', 'slug' => 'gtav']);
-        Game::create(['title' => 'Grand Theft Auto IV', 'slug' => 'gtaiv']);
+        Game::create(['title' => 'Grand Theft Auto V', 'slug' => 'gtav', 'active' => true]);
+        Game::create(['title' => 'Grand Theft Auto IV', 'slug' => 'gtaiv', 'active' => true]);
 
         // Create marker groups and save them 0-15 markers each.
         factory(MarkerGroup::class, 10)->create()->each(function ($group) use ($faker) {
@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             foreach (range(0, $random) as $i) {
                 $group->markers()->save(factory(Marker::class)->make());
             }
+            $group->game()->associate(Game::pluck('id')->random(1))->save();
         });
 
         // Create users.

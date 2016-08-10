@@ -13,4 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/games', 'APIController@games');
+Route::get('games', 'APIController@games');
+
+Route::group(['prefix' => '{game}'], function () {
+    Route::get('markergroups', 'APIController@markerGroups');
+    Route::get('markers', 'APIController@markers');
+});

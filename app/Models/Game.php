@@ -3,6 +3,7 @@
 namespace CockstarGays\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use CockstarGays\Models\MarkerGroup;
 
 class Game extends Model
 {
@@ -34,5 +35,15 @@ class Game extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function markerGroups()
+    {
+        return $this->hasMany(MarkerGroup::class);
+    }
+
+    public function markers()
+    {
+        return $this->hasManyThrough(Marker::class, MarkerGroup::class);
     }
 }
