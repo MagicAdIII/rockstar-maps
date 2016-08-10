@@ -24,8 +24,8 @@ abstract class CrudController extends Controller implements CrudInterface
      *
      * @var mixed
      */
-    protected static $validation = null;
-    protected static $model = null;
+    protected static $validationClass = null;
+    protected static $modelClass = null;
 
     /**
      * Name of the resource, in lowercase plural form.
@@ -40,7 +40,7 @@ abstract class CrudController extends Controller implements CrudInterface
      *
      * @var Model
      */
-    private $instance;
+    protected $model;
 
     /**
      * Constructor.
@@ -49,30 +49,14 @@ abstract class CrudController extends Controller implements CrudInterface
      */
     function __construct()
     {
-        // Check if the model class has been given in the Controller.
-        if ( ! static::$model) {
-            throw new CrudException("Model has not been defined in " . get_called_class());
-        }
+        $this->checkForErrors();
 
         // Initialize resource name and model instance.
-        $this->resource = str_plural(strtolower(class_basename(static::$model)));
-        $this->instance = new static::$model;
+        $this->resource = str_plural(strtolower(class_basename(static::$modelClass)));
+        $this->model = new static::$modelClass;
 
-        // Check if the validation class has been given in the Controller.
-        if ( ! static::$validation) {
-            throw new CrudException("Form Request class not set in " . get_called_class());
-        }
-
-        // Bind the Model's Form Request class to this Controller's Request type.
-        // @todo is this ok?
-        app()->bind(Request::class, function ($app) {
-            return $app->make(static::$validation);
-        });
-
-        // Check if the listable fields array has been given in the Model.
-        if ( ! property_exists($this->instance, 'listable')) {
-            throw new CrudException("Listable field array not found in model " . static::$model);
-        }
+        $this->bindValidation();
+        $this->bindVariables();
     }
 
     /**
@@ -83,9 +67,7 @@ abstract class CrudController extends Controller implements CrudInterface
     public function index()
     {
         return view('crud.index')->with([
-            'resource' => $this->resource,
-            'model' => $this->instance,
-            'items' => $this->instance->paginate(config('settings.pagination'))
+            'items' => $this->model->paginate(config('settings.pagination'))
         ]);
     }
 
@@ -96,11 +78,7 @@ abstract class CrudController extends Controller implements CrudInterface
      */
     public function create()
     {
-        return view('crud.create')->with([
-            'resource' => $this->resource,
-            'model' => $this->instance,
-            'fillable' => $this->instance->getFillable()
-        ]);
+        return view('crud.create')->withItem($this->model);
     }
 
     /**
@@ -111,9 +89,9 @@ abstract class CrudController extends Controller implements CrudInterface
      */
     public function store(Request $request)
     {
-        $this->instance->create($request->all());
+        $this->model->create($request->all());
 
-        session()->flash('messages.success', class_basename(static::$model) . ' successfully added!');
+        session()->flash('messages.success', class_basename(static::$modelClass) . ' successfully added!');
 
         return redirect()->route($this->resource.'.index');
     }
@@ -124,12 +102,9 @@ abstract class CrudController extends Controller implements CrudInterface
      * @param Model
      * @return void
      */
-    public function show(Model $model)
+    public function show(Model $item)
     {
-        return view('crud.show')->with([
-            'resource' => $this->resource,
-            'model' => $model,
-        ]);
+        return view('crud.show')->withItem($item);
     }
 
     /**
@@ -138,12 +113,9 @@ abstract class CrudController extends Controller implements CrudInterface
      * @param Model
      * @return void
      */
-    public function edit(Model $model)
+    public function edit(Model $item)
     {
-        return view('crud.edit')->with([
-            'resource' => $this->resource,
-            'model' => $model,
-        ]);
+        return view('crud.edit')->withItem($item);
     }
 
     /**
@@ -153,11 +125,11 @@ abstract class CrudController extends Controller implements CrudInterface
      * @param Request
      * @return void
      */
-    public function update(Model $model, Request $request)
+    public function update(Model $item, Request $request)
     {
-        $model->update($request->all());
+        $item->update($request->all());
 
-        session()->flash('messages.success', class_basename(static::$model) . ' successfully updated!');
+        session()->flash('messages.success', class_basename(static::$modelClass) . ' successfully updated!');
 
         return redirect()->route($this->resource.'.index');
     }
@@ -168,13 +140,62 @@ abstract class CrudController extends Controller implements CrudInterface
      * @param Model
      * @return void
      */
-    public function destroy(Model $model)
+    public function destroy(Model $item)
     {
-        $model->delete();
+        $item->delete();
 
-        session()->flash('messages.success', class_basename(static::$model) . ' successfully deleted!');
+        session()->flash('messages.success', class_basename(static::$modelClass) . ' successfully deleted!');
 
         return redirect()->route($this->resource.'.index');
+    }
+
+    /**
+     * Check for any errors while using CrudController.
+     *
+     * @throws CrudException
+     * @return void
+     */
+    private function checkForErrors() {
+
+        // Check if the model class has been given in the Controller.
+        if ( ! static::$modelClass) {
+            throw new CrudException("Model has not been defined in " . get_called_class());
+        }
+
+        // Check if the listable fields array has been given in the Model.
+        else if ( ! property_exists((new static::$modelClass), 'listable')) {
+            throw new CrudException("Listable field array not found in model " . static::$modelClass);
+        }
+
+        // Check if the validation class has been given in the Controller.
+        if ( ! static::$validationClass) {
+            throw new CrudException("Form Request class not set in " . get_called_class());
+        }
+    }
+
+    /**
+     * Bind proper Form Request class when typehinting Request.
+     * @todo Find out if this should go in Service Provider?
+     *
+     * @return void
+     */
+    private function bindValidation() {
+        app()->bind(Request::class, function ($app) {
+            return $app->make(static::$validationClass);
+        });
+    }
+
+    /**
+     * Add variables to CRUD views.
+     * @todo Find out if this should go in Service Provider?
+     *
+     * @return void
+     */
+    private function bindVariables() {
+        view()->composer('crud.*', function ($view) {
+            $view->with('resource', $this->resource);
+            $view->with('model', $this->model);
+        });
     }
 
 }

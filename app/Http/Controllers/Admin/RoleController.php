@@ -16,6 +16,6 @@ class RoleController extends CrudController
      *
      * @var string
      */
-    protected static $model = Role::class;
-    protected static $validation = RoleRequest::class;
+    protected static $modelClass = Role::class;
+    protected static $validationClass = RoleRequest::class;
 }

@@ -16,6 +16,7 @@ class UserController extends CrudController
      *
      * @var string
      */
-    protected static $model = User::class;
-    protected static $validation = UserRequest::class;
+    protected static $modelClass = User::class;
+    protected static $validationClass = UserRequest::class;
+
 }

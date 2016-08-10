@@ -15,6 +15,6 @@ class MarkerController extends CrudController
      *
      * @var string
      */
-    protected static $model = Marker::class;
-    protected static $validation = MarkerRequest::class;
+    protected static $modelClass = Marker::class;
+    protected static $validationClass = MarkerRequest::class;
 }

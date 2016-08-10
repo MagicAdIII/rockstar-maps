@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h1>{{ trans($resource.'.show.title') }}: {{ $model->id }}</h1>
+    <h1>{{ trans($resource.'.show.title') }}: {{ $item->id }}</h1>
     <hr>
 
 	<table class="table table-striped">
@@ -11,7 +11,7 @@
 		    @foreach ($model->listable as $field)
 		    	<tr>
 		    		<th>{{ trans($resource.'.'.$field) }}</th>
-		    		<td>{{ $model->{$field} }}</td>
+		    		<td>{{ $item->{$field} }}</td>
 		    	</tr>
 		    @endforeach
 		</tbody>

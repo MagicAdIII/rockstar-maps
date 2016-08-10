@@ -9,11 +9,11 @@ interface CrudInterface {
 
 	public function index();
 	public function create();
-	public function edit(Model $model);
-	public function show(Model $model);
+	public function edit(Model $item);
+	public function show(Model $item);
 
 	public function store(Request $request);
-	public function update(Model $model, Request $request);
-	public function destroy(Model $model);
+	public function update(Model $item, Request $request);
+	public function destroy(Model $item);
 
 }

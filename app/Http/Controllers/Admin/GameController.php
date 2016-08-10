@@ -17,6 +17,6 @@ class GameController extends CrudController
      *
      * @var string
      */
-    protected static $model = Game::class;
-    protected static $validation = GameRequest::class;
+    protected static $modelClass = Game::class;
+    protected static $validationClass = GameRequest::class;
 }
