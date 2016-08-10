@@ -1,9 +1,7 @@
 <?php
 
 use Faker\Generator;
-use CockstarGays\Models\Maps\Marker;
-use CockstarGays\Models\Maps\MarkerGroup;
-use CockstarGays\Models\{User, Game};
+use CockstarGays\Models\{User, Game, Marker, MarkerGroup};
 
 /**
  * User factories.
@@ -50,7 +48,6 @@ $factory->define(MarkerGroup::class, function (Generator $faker) {
         'slug' => str_slug($title),
         'description' => $faker->optional()->paragraph,
         'parent_id' => null,
-        'game_id' => $faker->numberBetween(1, 2),
         'active' => $faker->boolean(90),
     ];
 });

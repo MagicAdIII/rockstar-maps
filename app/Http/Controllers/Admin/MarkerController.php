@@ -1,10 +1,10 @@
 <?php
 
-namespace CockstarGays\Http\Controllers\Admin\Maps;
+namespace CockstarGays\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
-use CockstarGays\Models\Maps\Marker;
+use CockstarGays\Models\Marker;
 use CockstarGays\Http\Requests\MarkerRequest;
 use CockstarGays\Http\Controllers\CrudController;
 

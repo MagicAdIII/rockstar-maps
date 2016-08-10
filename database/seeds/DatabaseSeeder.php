@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use CockstarGays\Models\Maps\Marker;
-use CockstarGays\Models\Maps\MarkerGroup;
-use CockstarGays\Models\{Role, User, Game};
+use CockstarGays\Models\{User, Role, Game, Marker, MarkerGroup};
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,22 +23,18 @@ class DatabaseSeeder extends Seeder
         Game::create(['title' => 'Grand Theft Auto V', 'slug' => 'gtav']);
         Game::create(['title' => 'Grand Theft Auto IV', 'slug' => 'gtaiv']);
 
-        // Create markers and groups.
-        factory(Marker::class, 20)->create();
+        // Create marker groups and save them 0-15 markers each.
         factory(MarkerGroup::class, 10)->create()->each(function ($group) use ($faker) {
-            // These groups have 0-15 markers.
-            $group->markers()->save(factory(Marker::class)->make());
-            // And they belong to a game.
-            // $group->game()->save(factory(Game::class)->make()); // @fixme
+            $random = $faker->numberBetween(0, 15);
+            foreach (range(0, $random) as $i) {
+                $group->markers()->save(factory(Marker::class)->make());
+            }
         });
 
         // Create users.
         factory(User::class, 'admin')->create();
         factory(User::class, 'user')->create();
-        factory(User::class, 5)->create();
-        // factory(User::class, 5)->create()->each(function ($user) {
-        //     // These users have Markers.
-        //     $user->markers()->save(factory('CockstarGays\Models\Maps\Marker')->make());
-        // });
+        factory(User::class, 10)->create();
+
     }
 }

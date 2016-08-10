@@ -1,8 +1,8 @@
 <?php
 
-namespace CockstarGays\Models\Maps;
+namespace CockstarGays\Models;
 
-use CockstarGays\Models\Maps\Marker;
+use CockstarGays\Models\Marker;
 use Illuminate\Database\Eloquent\Model;
 
 class MarkerGroup extends Model
@@ -47,5 +47,15 @@ class MarkerGroup extends Model
     public function game()
     {
         return $this->belongsTo(Game::class);
+    }
+
+    /**
+     * Marker Groups can be nested.
+     *
+     * @return Relationship
+     */
+    public function parent()
+    {
+        return $this->belongsTo(MarkerGroup::class);
     }
 }

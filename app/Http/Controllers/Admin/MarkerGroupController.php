@@ -1,11 +1,11 @@
 <?php
 
-namespace CockstarGays\Http\Controllers\Admin\Maps;
+namespace CockstarGays\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
 use CockstarGays\Http\Requests;
-use CockstarGays\Models\Maps\MarkerGroup;
+use CockstarGays\Models\MarkerGroup;
 use CockstarGays\Http\Controllers\CrudController;
 
 class MarkerGroupController extends CrudController

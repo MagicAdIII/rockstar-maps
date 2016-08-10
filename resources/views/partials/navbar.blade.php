@@ -22,6 +22,8 @@
                 <li><a href="{{ route('roles.index') }}">Roles</a></li>
                 <li><a href="{{ route('users.index') }}">Users</a></li>
                 <li><a href="{{ route('games.index') }}">Games</a></li>
+                <li><a href="{{ route('markers.index') }}">Markers</a></li>
+                <li><a href="{{ route('markergroups.index') }}">MarkerGroups</a></li>
             @endif
         @endif
     </ul>

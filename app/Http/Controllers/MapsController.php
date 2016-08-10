@@ -3,8 +3,6 @@
 namespace CockstarGays\Http\Controllers;
 
 use CockstarGays\Models\Game;
-use CockstarGays\Http\Requests;
-use Illuminate\Http\Request;
 
 class MapsController extends Controller
 {

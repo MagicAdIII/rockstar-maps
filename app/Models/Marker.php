@@ -1,8 +1,8 @@
 <?php
 
-namespace CockstarGays\Models\Maps;
+namespace CockstarGays\Models;
 
-use CockstarGays\Models\Maps\MarkerGroup;
+use CockstarGays\Models\MarkerGroup;
 use Illuminate\Database\Eloquent\Model;
 
 class Marker extends Model
@@ -13,7 +13,7 @@ class Marker extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'description', 'x', 'y', 'z', 'checkable', 'active', 'group_id'];
+    protected $fillable = ['title', 'description', 'x', 'y', 'z', 'checkable', 'active', 'marker_group_id'];
 
     /**
      * These fields will be listed in admin lister.
@@ -27,7 +27,7 @@ class Marker extends Model
         'y',
         'z',
         'checkable',
-        'group_id',
+        'marker_group_id',
         'user_id',
         'active',
     ];
