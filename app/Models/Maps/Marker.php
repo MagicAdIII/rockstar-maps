@@ -20,12 +20,9 @@ class Marker extends Model
      *
      * @var array
      */
-    public static function getListFields()
-    {
-        return [
-            'title', 'description', 'x', 'y', 'z', 'checkable', 'active', 'group_id', 'user_id'
-        ];
-    }
+    public $listable = [
+        'title', 'description', 'x', 'y', 'z', 'checkable', 'active', 'group_id', 'user_id'
+    ];
 
     /**
      * Get the marker's group.

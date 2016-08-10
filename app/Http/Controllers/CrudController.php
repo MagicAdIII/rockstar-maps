@@ -20,6 +20,14 @@ use Illuminate\Support\Facades\Route;
 abstract class CrudController extends Controller implements CrudInterface
 {
     /**
+     * Initialize the validation class and model variables.
+     *
+     * @var mixed
+     */
+    protected static $validation = null;
+    protected static $model = null;
+
+    /**
      * Name of the resource, in lowercase plural form.
      * (e.g. User -> users)
      *
@@ -35,22 +43,35 @@ abstract class CrudController extends Controller implements CrudInterface
     private $instance;
 
     /**
-     * Set an instance of the model.
+     * Constructor.
      *
      * @return void
      */
     function __construct()
     {
+        // Check if the model class has been given in the Controller.
+        if ( ! static::$model) {
+            throw new CrudException("Model has not been defined in " . get_called_class());
+        }
+
+        // Initialize resource name and model instance.
         $this->resource = str_plural(strtolower(class_basename(static::$model)));
         $this->instance = new static::$model;
 
+        // Check if the validation class has been given in the Controller.
+        if ( ! static::$validation) {
+            throw new CrudException("Form Request class not set in " . get_called_class());
+        }
+
+        // Bind the Model's Form Request class to this Controller's Request type.
         // @todo is this ok?
         app()->bind(Request::class, function ($app) {
             return $app->make(static::$validation);
         });
 
+        // Check if the listable fields array has been given in the Model.
         if ( ! property_exists($this->instance, 'listable')) {
-            throw new CrudException("Listable field array not found in model {static::$model}.");
+            throw new CrudException("Listable field array not found in model " . static::$model);
         }
     }
 
