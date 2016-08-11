@@ -16,6 +16,7 @@
 </head>
 <body>
     @include('partials.navbar')
+    @include('partials.messages')
     @yield('content')
 
     {{-- @todo UGLY --}}

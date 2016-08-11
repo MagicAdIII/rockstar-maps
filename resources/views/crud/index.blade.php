@@ -7,8 +7,6 @@
 	<a href="{{ route($resource.'.create') }}" class="btn btn-success">{{ trans($resource.'.add_new') }}</a>
 	<hr>
 
-	@include('crud.partials.messages')
-
 	<table class="table table-striped">
 		<thead>
 			<tr>

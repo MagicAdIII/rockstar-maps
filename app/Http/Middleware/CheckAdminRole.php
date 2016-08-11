@@ -17,7 +17,8 @@ class CheckAdminRole
     public function handle($request, Closure $next)
     {
         if (! Auth::check() || ! Auth::user()->isAdmin()) {
-            abort(403, 'Unauthorized!');
+            session()->flash('messages.danger', 'You are not authorized to view this page.');
+            return redirect()->route('login');
         }
         return $next($request);
     }
