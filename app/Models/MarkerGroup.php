@@ -2,18 +2,41 @@
 
 namespace CockstarGays\Models;
 
+use Baum\Node;
 use CockstarGays\Models\Marker;
 use Illuminate\Database\Eloquent\Model;
 
-class MarkerGroup extends Model
+class MarkerGroup extends Node
 {
+
+    /**
+     * Table name.
+     *
+     * @var string
+     */
+    protected $table = 'marker_groups';
+
+    //
+    // This is to support "scoping" which may allow to have multiple nested
+    // set trees in the same database table.
+    //
+    // You should provide here the column names which should restrict Nested
+    // Set queries. f.ex: company_id, etc.
+    //
+
+    // /**
+    //  * Columns which restrict what we consider our Nested Set list
+    //  *
+    //  * @var array
+    //  */
+    // protected $scoped = array();
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['title', 'slug', 'description', 'active', 'parent_id', 'game_id'];
+    protected $fillable = ['title', 'slug', 'description', 'active', 'game_id'];
 
     /**
      * These fields will be listed in admin lister.

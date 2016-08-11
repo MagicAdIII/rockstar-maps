@@ -23,20 +23,29 @@ class DatabaseSeeder extends Seeder
         Game::create(['title' => 'Grand Theft Auto V', 'slug' => 'gtav', 'active' => true]);
         Game::create(['title' => 'Grand Theft Auto IV', 'slug' => 'gtaiv', 'active' => true]);
 
-        // Create marker groups and save them 0-15 markers each.
-        $groups = factory(MarkerGroup::class, 15)->create()->each(function ($group) use ($faker) {
+        // Create marker groups.
+        MarkerGroup::buildTree([
+          ['id' => 1, 'slug' => str_slug($faker->streetName), 'title' => 'TV & Home Theather'],
+          ['id' => 2, 'slug' => str_slug($faker->streetName), 'title' => 'Tablets & E-Readers'],
+          ['id' => 3, 'slug' => str_slug($faker->streetName), 'title' => 'Computers', 'children' => [
+            ['id' => 4, 'slug' => str_slug($faker->streetName), 'title' => 'Laptops', 'children' => [
+              ['id' => 5, 'slug' => str_slug($faker->streetName), 'title' => 'PC Laptops'],
+              ['id' => 6, 'slug' => str_slug($faker->streetName), 'title' => 'Macbooks (Air/Pro)']
+            ]],
+            ['id' => 7, 'slug' => str_slug($faker->streetName), 'title' => 'Desktops'],
+            ['id' => 8, 'slug' => str_slug($faker->streetName), 'title' => 'Monitors']
+          ]],
+          ['id' => 9, 'slug' => str_slug($faker->streetName), 'title' => 'Cell Phones']
+        ]);
+
+        // Create markers.
+        MarkerGroup::all()->each(function ($group) use ($faker) {
+            $group->game()->associate(1 /* gtav */)->save();
             $random = $faker->numberBetween(0, 15);
             foreach (range(0, $random) as $i) {
                 $group->markers()->save(factory(Marker::class)->make());
             }
-            $group->game()->associate(1 /* gtav */)->save();
         });
-
-        // $groups->filter(function ($value, $key) {
-        //     return $key > 3;
-        // })->each(function ($group) use ($faker) {
-        //     $group->parent()->associate($faker->numberBetween(1, 4))->save();
-        // });
 
         // Create users.
         factory(User::class, 'admin')->create();

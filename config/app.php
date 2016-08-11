@@ -176,6 +176,7 @@ return [
          * Vendor
          */
         Collective\Html\HtmlServiceProvider::class,
+        Baum\Providers\BaumServiceProvider::class
 
     ],
 
