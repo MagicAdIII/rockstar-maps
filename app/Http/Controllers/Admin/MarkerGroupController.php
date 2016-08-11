@@ -4,7 +4,7 @@ namespace CockstarGays\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
-use CockstarGays\Http\Requests;
+use CockstarGays\Http\Requests\MarkerGroupRequest;
 use CockstarGays\Models\MarkerGroup;
 use CockstarGays\Http\Controllers\CrudController;
 

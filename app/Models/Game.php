@@ -37,14 +37,23 @@ class Game extends Model
         return 'slug';
     }
 
+    /**
+     * Get the Marker Groups associated with this game.
+     *
+     * @return Relationship
+     */
     public function markerGroups()
     {
         return $this->hasMany(MarkerGroup::class);
     }
 
+    /**
+     * Get the markers through the MarkerGroups.
+     *
+     * @return Relationship
+     */
     public function markers()
     {
         return $this->hasManyThrough(Marker::class, MarkerGroup::class);
     }
-
 }

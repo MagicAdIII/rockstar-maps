@@ -41,4 +41,9 @@ class Marker extends Model
     {
         return $this->belongsTo(MarkerGroup::class);
     }
+
+    public function selectGroup()
+    {
+        return (new MarkerGroup)->selectParent();
+    }
 }

@@ -73,13 +73,23 @@ class MarkerGroup extends Node
     }
 
     /**
-     * Marker Groups can be nested.
+     * Get Games for select lists.
      *
-     * @return Relationship
+     * @return array
      */
-    // public function parent()
-    // {
-    //     return $this->belongsTo(MarkerGroup::class, 'parent_id');
-    // }
+    public function selectGames()
+    {
+        return Game::pluck('title', 'id')->prepend('Please Select')->toArray();
+    }
+
+    /**
+     * Get select list for nested structure.
+     *
+     * @return array
+     */
+    public function selectParent()
+    {
+        return ['None'] + $this->getNestedList('title', 'id', '---');
+    }
 
 }
