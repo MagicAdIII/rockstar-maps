@@ -1,15 +1,9 @@
-var elixir = require('laravel-elixir');
-var webpack = require('webpack');
-
 module.exports = {
-	devtool: 'source-maps',
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify(elixir.inProduction ? 'production' : 'development')
-            }
-        })
-    ],
+    stats: {
+        assets: true,
+        version: false,
+        errorDetails: true
+    },
     module: {
         loaders: [
             {
