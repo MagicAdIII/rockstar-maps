@@ -15,7 +15,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
-Route::get('{game}/map', 'MapsController@showMap');
+Route::get('maps/{game}', 'MapsController@showMap')->name('maps.index');
 
 // @fixme ugly as fuck
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {

@@ -26,6 +26,7 @@ class APIController extends Controller
 
     public function tree(Game $game)
     {
-        return response()->json($game->markerGroups->toHierarchy());
+        $groups = $game->markerGroups->toHierarchy()->values()->toArray();
+        return response()->json($groups);
     }
 }

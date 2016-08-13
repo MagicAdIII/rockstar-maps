@@ -1,4 +1,4 @@
-const config = {
+export default {
 
     /**
      * ID of DOM element where the map will be rendered.
@@ -6,17 +6,6 @@ const config = {
      * @type {String}
      */
     containerId: 'map',
-
-    /**
-     * Options for Layers Control.
-     *
-     * @see http://leafletjs.com/reference.html#control-layers
-     * @type {Object}
-     */
-    layersOptions: {
-        collapsed: false,
-        groupCheckboxes: true
-    },
 
     /**
      * This map will load by default, if not specified.
@@ -32,30 +21,33 @@ const config = {
      * @type {Object}
      */
     gtav: {
-        layers: {
-            atlas: {
+        layers: [
+            {
+                id: 'atlas',
                 name: 'Atlas',
                 bg: '#0fa8d2',
                 minZoom: 1,
                 maxZoom: 5,
             },
-            road: {
+            {
+                id: 'road',
                 name: 'Roadmap',
                 bg: '#1862ad',
                 minZoom: 1,
                 maxZoom: 5,
             },
-            satellite: {
+            {
+                id: 'sat',
                 name: 'Satellite',
                 bg: '#143d6b',
                 minZoom: 1,
                 maxZoom: 5,
             }
-        },
-        defaultLayer: 'Atlas',
+        ],
+        defaultLayer: 'Roadmap',
         defaultZoom: 3,
         defaultView: [27.35, -752.05],
-        transform: {
+        crs: {
             a: 1 / 12446,
             b: 3756 / 8192,
             c: -1 / 12446,
@@ -64,18 +56,19 @@ const config = {
     },
 
     gtaiv: {
-        layers: {
-            road: {
+        layers: [
+            {
+                id: 'road',
                 name: 'Roadmap',
                 bg: '#5D7C8D',
                 minZoom: 1,
                 maxZoom: 5,
             },
-        },
-        defaultLayer: 'road',
+        ],
+        defaultLayer: 'Roadmap',
         defaultZoom: 3,
         defaultView: [-0.30, 0.34],
-        transform: {
+        crs: {
             a: 0.5,
             b: 0.5,
             c: 0.5,
@@ -83,5 +76,3 @@ const config = {
         }
     }
 };
-
-export default config;

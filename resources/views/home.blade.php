@@ -7,7 +7,7 @@
         <p>choose a game</p>
 
         @foreach ($games as $game)
-            <a href="/{{ $game->slug }}/map">{{ $game->title }}</a>
+            <a href="{{ route('maps.index', $game) }}">{{ $game->title }}</a>
         @endforeach
     </div>
 </div>

@@ -1,6 +1,6 @@
 <!doctype html>
 {{-- @todo UGLY --}}
-@if (request()->is('*/map'))
+@if (request()->route()->getName() === 'maps.index')
 <html lang="{{ config('app.locale') }}" class="map-layout">
 @else
 <html lang="{{ config('app.locale') }}">
@@ -20,7 +20,7 @@
     @yield('content')
 
     {{-- @todo UGLY --}}
-    @if (request()->is('*/map'))
+    @if (request()->route()->getName() === 'maps.index')
         @stack('scripts')
         <script src="{{ elixirAsset('js/app.js') }}"></script>
     @endif
