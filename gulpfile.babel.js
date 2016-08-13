@@ -2,7 +2,7 @@
 
 import elixir from 'laravel-elixir'
 import { styles, scripts } from './gulp.config.js'
-import { generateTiles } from './gulp.tasks'
+import './gulp.tasks'
 
 elixir((mix) => {
 
