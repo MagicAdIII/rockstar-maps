@@ -1,6 +1,7 @@
 import L from 'leaflet'
+import getTraversed from './traverse'
 
-L.Control.LayersTree = L.Control.extend(L.Control.Layers, {
+L.Control.LayersTree = L.Control.extend({
     options: {
         collapsed: false,
         position: 'topright',
@@ -14,13 +15,14 @@ L.Control.LayersTree = L.Control.extend(L.Control.Layers, {
         this._lastZIndex = 0;
         this._handlingClick = false;
 
-        for (var i in baseLayers) {
+        for (let i in baseLayers) {
             this._addLayer(baseLayers[i], i);
         }
 
-        for (i in overlays) {
-            this._addLayer(overlays[i], i, true);
+        for (let i in getTraversed(overlays)) {
+            this._addOverlay(baseLayers[i], i);
         }
+
     },
 
     onAdd: function (map) {
@@ -47,7 +49,7 @@ L.Control.LayersTree = L.Control.extend(L.Control.Layers, {
     },
 
     addOverlay: function (layer, name) {
-        this._addLayer(layer, name, true);
+        this._addOverlay(layer, name);
         this._update();
         return this;
     },
@@ -105,11 +107,14 @@ L.Control.LayersTree = L.Control.extend(L.Control.Layers, {
             this._expand();
         }
 
-        this._baseLayersList = L.DomUtil.create('div', className + '-base', form);
-        this._separator = L.DomUtil.create('div', className + '-separator', form);
-        this._overlaysList = L.DomUtil.create('div', className + '-overlays', form);
+        this._baseLayersList = L.DomUtil.create('ul', className + '-base', form);
+        this._overlaysList = L.DomUtil.create('ul', className + '-overlays', form);
 
         container.appendChild(form);
+    },
+
+    _addOverlay: function (layer, name) {
+        this._addLayer(layer, name, true)
     },
 
     _addLayer: function (layer, name, overlay) {
@@ -135,18 +140,10 @@ L.Control.LayersTree = L.Control.extend(L.Control.Layers, {
         this._baseLayersList.innerHTML = '';
         this._overlaysList.innerHTML = '';
 
-        var baseLayersPresent = false,
-            overlaysPresent = false,
-            i, obj;
-
-        for (i in this._layers) {
-            obj = this._layers[i];
-            this._addItem(obj);
-            overlaysPresent = overlaysPresent || obj.overlay;
-            baseLayersPresent = baseLayersPresent || !obj.overlay;
+        for (let i in this._layers) {
+            let obj = this._layers[i]
+            this._addItem(obj)
         }
-
-        this._separator.style.display = overlaysPresent && baseLayersPresent ? '' : 'none';
     },
 
     _onLayerChange: function (e) {
@@ -183,7 +180,7 @@ L.Control.LayersTree = L.Control.extend(L.Control.Layers, {
     },
 
     _addItem: function (obj) {
-        var label = document.createElement('label'),
+        var li = document.createElement('li'),
             input,
             checked = this._map.hasLayer(obj.layer);
 
@@ -203,13 +200,13 @@ L.Control.LayersTree = L.Control.extend(L.Control.Layers, {
         var name = document.createElement('span');
         name.innerHTML = ' ' + obj.name;
 
-        label.appendChild(input);
-        label.appendChild(name);
+        li.appendChild(input);
+        li.appendChild(name);
 
         var container = obj.overlay ? this._overlaysList : this._baseLayersList;
-        container.appendChild(label);
+        container.appendChild(li);
 
-        return label;
+        return li;
     },
 
     _onInputClick: function () {

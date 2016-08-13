@@ -7,6 +7,7 @@ import $ from 'jquery'; // temp
 import CRS from './CRS'
 import Layer from './Layer'
 import './Control.LayersTree'
+import getTraversed from './traverse'
 
 export default class {
 
@@ -18,7 +19,6 @@ export default class {
 
         this.setMap()
         this.setHash()
-        this.addControls()
 
         debug && this._setDebug()
     }
@@ -34,6 +34,8 @@ export default class {
             zoom: this._game.defaultZoom,
             attributionControl: false
         })
+
+        this.setOverlays()
 
         // Set initial background of default layer.
         this.mapContainer = map.getContainer()
@@ -68,32 +70,28 @@ export default class {
         return this.getDefaultLayer()
     }
 
+    setOverlays() {
+        $.getJSON('/api/maps/' + this._gameslug + '/tree').then(data => {
+            // var prev = 0
+            // var overlays = {}
+            // let tree = getTraversed(data, function(item) {
+            //     console.log(item);
+            //     while (item.depth > prev) {
+            //         overlays[item.title]
+            //     }
+            //     prev = item.depth
+            // })
+
+            // this.addControls()
+        })
+    }
+
     addControls() {
         this._controlOptions = { // @todo will be moved to own L.Control class
             collapsed: false
         }
 
-        this.addLayerControls()
-        this.addMarkerControls()
-    }
-
-    addMarkerControls() {
-
-    }
-
-    addLayerControls() {
-        L.control.layers(this._baseLayers, this._overlays, this._controlOptions).addTo(this.map)
-    }
-
-    getMarkerGroups() {
-        $.getJSON('/api/maps/' + window.GAMESLUG + '/tree', function (data) {
-            console.log(data);
-
-            // L.control.layersTree(baseLayers, overlays).addTo(MAP);
-
-            // L.control.layerTree(baseLayers, groupedOverlays, config.layersOptions).addTo(MAP);
-            // L.control.layers(baseLayers, groupedOverlays, config.layersOptions).addTo(MAP);
-        })
+        L.control.layersTree(this._baseLayers, this._overlays, this._controlOptions).addTo(this.map)
     }
 
     _setDebug() {

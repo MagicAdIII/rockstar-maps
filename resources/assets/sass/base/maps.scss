@@ -20,3 +20,9 @@ html.map-layout {
 .map-gtav {
     background-color: $map-gtav-atlas;
 }
+
+.leaflet-control-container ul { // temp
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
