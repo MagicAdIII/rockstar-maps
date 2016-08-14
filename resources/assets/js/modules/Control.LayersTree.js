@@ -19,8 +19,8 @@ L.Control.LayersTree = L.Control.extend({
             this._addLayer(baseLayers[i], i);
         }
 
-        for (let i in getTraversed(overlays)) {
-            this._addOverlay(baseLayers[i], i);
+        for (let i in overlays) {
+            this._addOverlay(overlays[i], i);
         }
 
     },
@@ -185,6 +185,7 @@ L.Control.LayersTree = L.Control.extend({
             checked = this._map.hasLayer(obj.layer);
 
         if (obj.overlay) {
+            console.log(obj);
             input = document.createElement('input');
             input.type = 'checkbox';
             input.className = 'leaflet-control-layers-selector';
@@ -197,11 +198,13 @@ L.Control.LayersTree = L.Control.extend({
 
         L.DomEvent.on(input, 'click', this._onInputClick, this);
 
+        var label = document.createElement('label')
         var name = document.createElement('span');
         name.innerHTML = ' ' + obj.name;
 
-        li.appendChild(input);
-        li.appendChild(name);
+        label.appendChild(input)
+        label.appendChild(name)
+        li.appendChild(label)
 
         var container = obj.overlay ? this._overlaysList : this._baseLayersList;
         container.appendChild(li);

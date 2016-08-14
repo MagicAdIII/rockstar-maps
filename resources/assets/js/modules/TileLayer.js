@@ -1,6 +1,6 @@
 import L from 'leaflet'
 
-export default class Layer {
+export default class TileLayer {
 
 	constructor(gameslug, layerId, options) {
         let format = options.tileFormat || 'png'

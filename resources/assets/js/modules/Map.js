@@ -5,8 +5,9 @@ import config from '../config';
 import $ from 'jquery'; // temp
 
 import CRS from './CRS'
-import Layer from './Layer'
+import TileLayer from './TileLayer'
 import './Control.LayersTree'
+import './LayersTreeGroup'
 import getTraversed from './traverse'
 
 export default class {
@@ -60,7 +61,7 @@ export default class {
 
     setBaseLayers() {
         this._game.layers.forEach(layer => {
-            this._baseLayers[layer.name] = new Layer(this._gameslug, layer.id, {
+            this._baseLayers[layer.name] = new TileLayer(this._gameslug, layer.id, {
                 minZoom: layer.minZoom,
                 maxZoom: layer.maxZoom,
                 background: layer.bg
@@ -72,6 +73,17 @@ export default class {
 
     setOverlays() {
         $.getJSON('/api/maps/' + this._gameslug + '/tree').then(data => {
+            getTraversed(data, (item) => {
+                this._overlays[item.title] = L.layersTreeGroup([])
+
+                // return L.layer
+            })
+            // console.log(this._overlays);
+            // let asd = {}
+            // getTraversed(data, function(item) {
+            //     asd[item.title] = item.slug
+            // });
+            // console.log(asd);
             // var prev = 0
             // var overlays = {}
             // let tree = getTraversed(data, function(item) {
@@ -82,7 +94,7 @@ export default class {
             //     prev = item.depth
             // })
 
-            // this.addControls()
+            this.addControls()
         })
     }
 

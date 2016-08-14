@@ -3,12 +3,12 @@
 function *traverse (leaf) {
     if (!leaf) return
 
-    for (let i in leaf){
+    for (let i in leaf) {
         let val = leaf[i];
         yield val;
 
         if (val.children.length) {
-            yield * traverse(val.children);
+            yield *traverse(val.children);
         }
     }
 }
@@ -16,10 +16,8 @@ function *traverse (leaf) {
 export default function (data, callback) {
     var iterator = traverse(data)
     var leaf = iterator.next()
-    var arr = []
     while (!leaf.done) {
         callback(leaf.value)
         leaf = iterator.next()
     }
-    return arr
 }
