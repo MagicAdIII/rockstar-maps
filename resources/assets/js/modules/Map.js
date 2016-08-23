@@ -8,7 +8,7 @@ import CRS from './CRS'
 import TileLayer from './TileLayer'
 import './Control.LayersTree'
 import './LayersTreeGroup'
-import getTraversed from './traverse'
+// import getTraversed from './traverse'
 
 export default class {
 
@@ -73,11 +73,11 @@ export default class {
 
     setOverlays() {
         $.getJSON('/api/maps/' + this._gameslug + '/tree').then(data => {
-            getTraversed(data, (item) => {
-                this._overlays[item.title] = L.layersTreeGroup([])
+            // getTraversed(data, (item) => {
+            //     this._overlays[item.title] = L.layersTreeGroup([])
 
-                // return L.layer
-            })
+            //     // return L.layer
+            // })
             // console.log(this._overlays);
             // let asd = {}
             // getTraversed(data, function(item) {

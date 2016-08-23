@@ -1,5 +1,4 @@
 import L from 'leaflet'
-import getTraversed from './traverse'
 
 L.Control.LayersTree = L.Control.extend({
     options: {

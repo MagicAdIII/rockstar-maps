@@ -1,6 +1,6 @@
-import plugins from 'gulp-load-plugins'
 import gutil, { log } from 'gulp-util'
 import path from 'path'
+import plugins from 'gulp-load-plugins'
 plugins()
 
 /**

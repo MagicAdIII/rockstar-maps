@@ -1,19 +1,33 @@
 'use strict'
 
 import elixir from 'laravel-elixir'
-import { styles, scripts } from './gulp.config.js'
+import dotenv from 'dotenv'
 import './gulp.tasks'
 
-elixir((mix) => {
+/**
+ * Config
+ */
+dotenv.config()
+elixir.config.browserSync = {
+    open: false,
+    proxy: process.env.APP_URL,
+    reloadOnRestart: true,
+    notify: false
+}
+
+/**
+ * Build
+ */
+elixir(mix => {
 
     // Compile assets.
-    mix.sass(styles.src)
-       .webpack(scripts.src)
+    mix.sass('app.scss')
+       .rollup('app.js')
 
     // Version the assets on production only.
     elixir.inProduction && mix.version([
-        styles.build,
-        scripts.build
+        'public/css/app.css',
+        'public/js/app.js'
     ])
 
     // Live reload the browser on file updates.
