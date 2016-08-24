@@ -22,12 +22,12 @@ elixir(mix => {
 
     // Compile assets.
     mix.sass('app.scss')
-       .rollup('app.js')
+       .rollup('maps/maps.js')
 
     // Version the assets on production only.
     elixir.inProduction && mix.version([
         'public/css/app.css',
-        'public/js/app.js'
+        'public/js/maps.js'
     ])
 
     // Live reload the browser on file updates.

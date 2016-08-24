@@ -1,16 +1,15 @@
 import L from 'leaflet';
 import 'leaflet-hash';
-import 'leaflet-groupedlayercontrol';
-import config from '../config';
 import $ from 'jquery'; // temp
 
-import CRS from './CRS'
-import TileLayer from './TileLayer'
-import './Control.LayersTree'
-import './LayersTreeGroup'
+// import './LayersTreeGroup'
 // import getTraversed from './traverse'
+import config from './config';
+import CRS from './core/CRS'
+import LayersTree from './controls/Control.LayersTree'
+import TileLayer from './layers/TileLayer'
 
-export default class {
+class Map {
 
     constructor(game, debug = false) {
         this._gameslug = game || config.defaultGame
@@ -113,3 +112,5 @@ export default class {
         L.marker([0, 0], { icon: L.divIcon() }).bindPopup('[0, 0] coords for reference.').addTo(this.map);
     }
 }
+
+const map = new Map(window.GAMESLUG, true)

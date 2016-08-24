@@ -22,7 +22,7 @@
     {{-- @todo UGLY --}}
     @if (request()->route()->getName() === 'maps.index')
         @stack('scripts')
-        <script src="{{ elixirAsset('js/app.js') }}"></script>
+        <script src="{{ elixirAsset('js/maps.js') }}"></script>
     @endif
 
 </body>
