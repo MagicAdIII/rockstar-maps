@@ -8,54 +8,14 @@ import dotenv from 'dotenv'
 import path from 'path'
 
 plugins()
+dotenv.config()
 
-/**
- * Config
- */
-class ConfigObject {
-
-    constructor() {
-        this.dotenv = dotenv.config()
-
-        this.browserSync = elixir.config.browserSync = {
-            open: false,
-            proxy: this.dotenv.APP_URL,
-            reloadOnRestart: true,
-            notify: false
-        }
-
-        this.css = {
-            assetsDir: elixir.config.get('assets.css.sass.folder'),
-            publicDir: elixir.config.get('public.css.sass.outputFolder')
-        }
-
-        this.js = {
-            assetsDir: elixir.config.get('assets.js.folder'),
-            publicDir: elixir.config.get('public.js.outputFolder')
-        }
-
-        this.styles = `${this.css.assetsDir}/app.scss`
-        this.scripts = `${this.js.assetsDir}/maps/maps.js`
-        this.versioned = [
-            `${this.css.publicDir}/**/*.css`,
-            `${this.js.publicDir}/**/*.js`
-        ]
-    }
-
-    static get styles() {
-        return this.styles
-    }
-
-    static get scripts() {
-        return this.scripts
-    }
-
-    static get versioned() {
-        return this.versioned
-    }
+elixir.config.browserSync = {
+    open: false,
+    proxy: process.env.APP_URL,
+    reloadOnRestart: true,
+    notify: false
 }
-
-const Config = new ConfigObject()
 
 /**
  * Create tiles for each map with gdal2tiles.
@@ -83,15 +43,21 @@ gulp.task('tiles', ['tiles:generate', 'tiles:compress'])
  * Build.
  */
 elixir(mix => {
+    let isWatching = elixir.isWatching()
+
+    // Lint files, if not watching.
+    ! isWatching && mix.eslint('resources/assets/js/**/*.js')
 
     // Compile assets.
-    mix.sass(Config.styles)
-       .eslint(Config.scripts)
-       .rollup(Config.scripts)
+    mix.sass('app.scss')
+       .rollup('maps/maps.js')
 
     // Version the assets on production only.
-    elixir.inProduction && mix.version(Config.versioned)
+    elixir.inProduction && mix.version([
+        'public/css/app.css',
+        'public/js/app.js',
+    ])
 
     // Live reload the browser on file updates.
-    elixir.isWatching() && mix.browserSync()
+    isWatching && mix.browserSync()
 })
