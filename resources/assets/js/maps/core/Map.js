@@ -1,15 +1,15 @@
-import L from 'leaflet';
+import L from 'leaflet'
+import CRS from './CRS'
 import 'leaflet-hash';
-import $ from 'jquery'; // temp
+import $ from 'jquery' // temp
 
 // import './LayersTreeGroup'
 // import getTraversed from './traverse'
-import config from './config';
-import CRS from './core/CRS'
-import LayersTree from './controls/Control.LayersTree'
-import TileLayer from './layers/TileLayer'
+import config from '../config';
+import LayersTree from '../controls/Control.LayersTree'
+import TileLayer from '../layers/TileLayer'
 
-class Map {
+export default class Map {
 
     constructor(game, debug = false) {
         this._gameslug = game || config.defaultGame
@@ -72,27 +72,6 @@ class Map {
 
     setOverlays() {
         $.getJSON('/api/maps/' + this._gameslug + '/tree').then(data => {
-            // getTraversed(data, (item) => {
-            //     this._overlays[item.title] = L.layersTreeGroup([])
-
-            //     // return L.layer
-            // })
-            // console.log(this._overlays);
-            // let asd = {}
-            // getTraversed(data, function(item) {
-            //     asd[item.title] = item.slug
-            // });
-            // console.log(asd);
-            // var prev = 0
-            // var overlays = {}
-            // let tree = getTraversed(data, function(item) {
-            //     console.log(item);
-            //     while (item.depth > prev) {
-            //         overlays[item.title]
-            //     }
-            //     prev = item.depth
-            // })
-
             this.addControls()
         })
     }
@@ -112,5 +91,3 @@ class Map {
         L.marker([0, 0], { icon: L.divIcon() }).bindPopup('[0, 0] coords for reference.').addTo(this.map);
     }
 }
-
-const map = new Map(window.GAMESLUG, true)
