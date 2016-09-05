@@ -16,6 +16,7 @@ export default class Map {
         this._game = config[this._gameslug]
         this._baseLayers = {}
         this._overlays = {}
+        this._crs = L.Util.extend({}, L.CRS, new CRS(this._game.crs))
 
         this.setMap()
         this.setHash()
@@ -24,11 +25,10 @@ export default class Map {
     }
 
     setMap() {
-        var defaultLayer = this.setBaseLayers(),
-            crs = this.crs = CRS(this._game.crs)
+        var defaultLayer = this.setBaseLayers()
 
         var map = this.map = L.map(config.containerId, {
-            crs: crs,
+            crs: this._crs,
             layers: defaultLayer,
             center: this._game.defaultView,
             zoom: this._game.defaultZoom,
